@@ -1,0 +1,208 @@
+<?php
+    $listOrders = $block->getLatestOrders();
+    $listOrders = $listOrders ? $listOrders : [];
+    
+    $detailCustomer = $block->getCurrentCustomer();;
+
+    $address = null;
+    if($detailCustomer->getAddresses()){
+        foreach ($detailCustomer->getAddresses() as $k => $item){
+            $address = $item;
+            break;
+        }
+    }
+?>
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <!-- Nav -->
+                <nav class="nav-page">
+                    <ol class="list-unstyled">
+                        <li><a href="<?=$block->getBaseUrl()?>"><?=__('Home')?></a></li>
+                        <li class="active"><?=__('Profile')?></li>
+                    </ol>
+                </nav>
+                <!-- End Nav -->
+            </div>
+
+            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 d-flex align-items-stretch">
+                <section class="profile-list">
+                    <div class="tit-page">
+                        <h2><?=__('My order list')?></h2>
+                        <div class="profile-orders">
+                            <?=__('You have %1 orders', number_format(count($listOrders)))?>
+                        </div>
+
+                        <?php if($listOrders){?>
+                            <div>
+                                <?php foreach($listOrders as $itemOrder){?>
+                                    <?php 
+                                        $itemProds = $itemOrder->getAllItems();
+                                        if($itemProds){
+                                        $itemProdFirst = $itemProds[0]->toArray();
+                                        $totalOrder = 0;
+                                    ?>
+                                    <div class="it">
+                                        <div class="top" onclick="">
+                                            <div><?=$block->formatDateStore($itemOrder->getCreatedAt())?></div>
+                                            <div><?=$itemOrder->getStatus()?></div>
+                                        </div>
+                                        <div class="bot">
+                                            <?php foreach ($itemProds as $itemProd){?>
+                                                <?php 
+                                                    $itemProd = $itemProd->toArray();
+                                                    $urlDetailProd = $block->getUrlDetailProduct($itemProd['product_id']);
+                                                    $qty = $itemProd['product_options']['info_buyRequest']['qty'];
+                                                    $price = $itemProd['price'];
+                                                    $totalAmount = $qty * $price;
+                                                    $totalOrder = $totalOrder + $totalAmount;
+                                                ?>
+                                                <div>
+                                                    <div class="img">
+                                                        <a href="<?=$urlDetailProd?>">
+                                                            <img class="img-fluid" src="<?=$block->getImage($itemProd['sku'], 'cart_page_product_thumbnail');?>" alt="<?=$itemProd['name']?>" title="<?=$itemProd['name']?>"/>
+                                                        </a>
+                                                    </div>
+                                                    <div class="name">
+                                                        <a href="<?=$urlDetailProd?>"><?=$itemProd['name']?></a>
+                                                        <div>
+                                                            <?=number_format($qty)?> x <?=number_format($price)?> VNĐ = <strong><?=number_format($totalAmount)?> VNĐ</strong>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            <?php } ?>
+                                        </div>
+                                        <div class="total-amount-order-profile"><?=__('Total amount')?>: <?=number_format($totalOrder)?> VNĐ</div>
+                                    </div>
+                                <?php } } ?>
+                            </div>
+                        <?php } ?>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Profile -->
+            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 d-flex align-items-stretch">
+                <section class="profile-edit">
+                    <div class="tit-page">
+                        <h2><?=__('Your information')?></h2>
+                        <form class="form" id="profile-edit-form" data-mage-init='{"validation":{}}'>
+                            <div class="row">
+                            
+                                <?php if($block->isB2B()){?>
+                                    <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                                        <div class="form-group">
+                                            <input type="text" name="company_name" class="form-control v-validate" placeholder="<?=__('Company Name')?>"
+                                                value="<?=$detailCustomer->getCompanyName()?>"
+                                                data-validate="{required:true}"
+                                                data-msg-required="<?=__('Please enter your company name')?>"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                        <div class="form-group">
+                                            <input type="text" name="tax_code" class="form-control v-validate" placeholder="<?=__('Tax Code')?>"
+                                                value="<?=$detailCustomer->getTaxCode()?>"
+                                                data-validate="{required:true}"
+                                                data-msg-required="<?=__('Please enter your tax code')?>"/>
+                                        </div>
+                                    </div>
+                                <?php } ?>
+
+                                <div class="col-12 col-sm-12 col-md-7 col-lg-7 col-xl-7">
+                                    <div class="form-group">
+                                        <input type="text" name="fullname" class="form-control v-validate" placeholder="<?=__('Full name')?>"
+                                            value="<?=$detailCustomer->getName()?>"
+                                            data-validate="{required:true}"
+                                            data-msg-required="<?=__('Please enter full name')?>"/>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5">
+                                    <div class="form-group">
+                                        <?php $phone = $address ? $address->getTelephone() : ''; ?>
+                                        <input type="number" name="phone" class="form-control v-validate" placeholder="<?=__('Phone number')?>"
+                                            value="<?=$phone?>" data-validate="{required:true}" maxlength="10" 
+                                            data-msg-required="<?=__('Please enter your phone')?>"/>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="form-group">
+                                        <input type="text" name="address" class="form-control v-validate" placeholder="<?=__('Address')?>"
+                                            value="<?=$address ? $address->getStreet()[0] : ''?>"
+                                            data-validate="{required:true}"
+                                            data-msg-required="<?=__('Please enter your address')?>"/>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                    <div class="form-group form-group-region-cart">
+                                        <?php
+                                            $regionId = $address ? $address->getRegionId() : '';
+                                            echo $block->getRegions($regionId);
+                                        ?>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                    <div class="form-group">
+                                        <input type="email" name="email" class="form-control v-validate" placeholder="<?=__('Your email')?>"
+                                            value="<?=$detailCustomer->getEmail()?>" readonly
+                                            data-validate="{required:true, 'validate-email': true}"
+                                            data-msg-required="<?=__('Please enter your email')?>"/>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                    <div class="form-group">
+                                        <input type="password" name="password" class="form-control v-validate validate-password" placeholder="<?=__('Your current password')?>"
+                                            data-validate="{'validate-password': true}"
+                                        />
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                    <div class="form-group">
+                                        <input type="password" id="confirmation" name="repassword" class="form-control v-validate" placeholder="<?=__('Your new password')?>"
+                                            data-validate="{'validate-cpassword': true}"/>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
+                                    <a class="more-masonry btn-profile-edit" href="javascript:void(0)"><i class="fa fa-spinner loading-profile fa-spin hide"></i> <?=__('Save')?></a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Popup response consulted -->
+<a class="btn-popup-profile-edit" data-fancybox data-src="#popup-get-profile-edit" href="javascript:;" style="display: none;"></a>
+<section style="display: none;" id="popup-get-profile-edit">
+    <div class="wrap-popup update">
+        <div class="text-center">
+            <img class="img-fluid" src="<?php echo $this->getViewFileUrl('images/ic-logo-white.jpg'); ?>" alt="DrinksAndCo" title="DrinksAndCo"/>
+            <h2><?=__('Your information has been updated successfully')?></h2>
+            <a class="start-shop btn-close-fancybox" href="javascript:void(0)"><?=__('Ok')?></a>
+        </div>
+    </div>
+</section>
+
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "DrinksAndCo_Customer/js/profile": {
+                "action": "<?= $block->getUpdateProfileUrl()?>",
+                "selectorForm": "#profile-edit-form",
+                "btnSubmit": ".btn-profile-edit"
+            }
+        }
+    }
+</script>

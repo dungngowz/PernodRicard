@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Email:etc/email_templates.xsd">
+    <template id="invite_friend_and_family" label="Invite Friend And Family" file="invite_friend_and_family.html" type="html" module="DrinksAndCo_Customer" area="frontend"/>
+</config>

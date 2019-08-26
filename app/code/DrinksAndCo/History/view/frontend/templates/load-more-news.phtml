@@ -1,0 +1,32 @@
+<?php
+    $collection = $block->getHistory();
+?>
+
+<?php  foreach ($collection as $post):  ?>
+    <div class="it">
+        <a href="<?php
+            if($post->getCatetories()->getFirstItem()->getUrlKey() != null )
+                echo $post->getPostUrlWithCategory($post->getCatetories()->getFirstItem()->getUrlKey()); 
+            else    
+                echo $post->getPostUrlWithNoCategory(); 
+            ?>">
+            <img class="img-fluid" src="<?php echo $post->getThumbnailUrl(); ?>" alt="<?php echo $post->getTitle() ?>">
+        </a>
+        <div>
+        <?php if ($post->getUpdatedByUser()): ?>
+            <?php echo __('Posted by %1', $post->getUpdatedByUser()); ?>
+        <?php else: ?>
+            <?php echo __('Posted by %1', $post->getUser()); ?>
+        <?php endif; ?>  
+            <?php echo __('%1', $block->formatDate($post->getCreatedAt(), \IntlDateFormatter::MEDIUM, false)); ?>
+        </div>
+        <a href="<?php 
+            if($post->getCatetories()->getFirstItem()->getUrlKey() != null )
+                echo $post->getPostUrlWithCategory($post->getCatetories()->getFirstItem()->getUrlKey()); 
+            else    
+                echo $post->getPostUrlWithNoCategory(); 
+        ?> ">
+            <?php echo $post->getTitle(); ?>
+        </a>
+    </div>
+<?php endforeach;?>

@@ -1,0 +1,14 @@
+#invite-friend-popup-toggle a{
+    position: relative;
+    bottom: 3px;
+    right: 10px;
+    color: white;
+}
+
+.invite-friend-modal-popup .modal-inner-wrap{
+    width: 50%;
+}
+.invite-friend-modal-popup .modal-header,
+.invite-friend-modal-popup .modal-footer{
+    display: none;
+}

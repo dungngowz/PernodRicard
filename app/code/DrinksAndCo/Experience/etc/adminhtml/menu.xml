@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Backend/etc/menu.xsd">
+    <menu>
+        <add id="DrinksAndCo_Experience::experience" title="Experience" module="DrinksAndCo_Experience" sortOrder="80" resource="DrinksAndCo_Experience::experience"/>
+        <add id="DrinksAndCo_Experience::manage_post" title="Manage Posts" module="DrinksAndCo_Experience" sortOrder="10" parent="DrinksAndCo_Experience::experience" action="experience/post/" resource="DrinksAndCo_Experience::manage_post"/>
+        <add id="DrinksAndCo_Experience::manage_comment" title="Manage Comments" module="DrinksAndCo_Experience" sortOrder="20" parent="DrinksAndCo_Experience::experience" action="experience/comment/" resource="DrinksAndCo_Experience::manage_comment"/>
+        <add id="DrinksAndCo_Experience::manage_category" title="Manage Categories" module="DrinksAndCo_Experience" sortOrder="30" parent="DrinksAndCo_Experience::experience" action="experience/category/" resource="DrinksAndCo_Experience::manage_category"/>
+        <!--<add id="DrinksAndCo_Experience::configuration" title="Configuration" module="DrinksAndCo_Experience" sortOrder="40" parent="DrinksAndCo_Experience::experience" action="adminhtml/system_config/edit/section/experience" resource="DrinksAndCo_Experience::configuration"/>-->
+    </menu>
+</config>

@@ -1,0 +1,23 @@
+<?php
+    $posts = $block->getPosts();
+?>
+<?php if (count($posts)): ?>
+    <div id="history-sidebar-recent-posts" class="block widget history-sidebar-block">
+        <div class="ecg-block-title">
+            <strong class="history-sidebar-block-title"><?php echo $block->escapeHtml(__('Recent posts')) ?></strong>
+        </div>
+        <div class="block-content history-sidebar-block-content">
+            <ul class="block-recent-posts">
+                <?php foreach ($posts as $post): ?>
+                    <li class="block-recent-posts-item">
+						<a href="<?php /* @noEscape */ echo $block->escapeXssInUrl($block->getPostUrl($post)) ?>"> <?php echo $block->getShortContent($post) ?></a>
+                        <a href="<?php /* @noEscape */ echo $block->escapeXssInUrl($block->getPostUrl($post)) ?>"
+                           class="block-recent-posts-link">
+                            <?php echo $block->escapeHtml($post->getTitle()) ?>
+                        </a>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+    </div>
+<?php endif; ?>

@@ -1,0 +1,97 @@
+<section class="head-page">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-10 col-sm-10 col-md-11 col-lg-11 col-xl-11 text-center">
+                <h2><?=__('Login')?></h2>
+            </div>
+            <div class="col-2 col-sm-2 col-md-1 col-lg-1 col-xl-1 text-center">
+                <!-- switcher -->
+                <div class="switcher-language">
+                    <ul class="menu-cart list-unstyled">
+                        <!-- switcher -->
+                        <?= $this->getLayout()->createBlock('\Magento\Store\Block\Switcher')->setTemplate('DrinksAndCo_ContentBuilder::languages_switcher.phtml')->toHtml(); ?>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container ">
+        <div class="row text-center">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 login-parent">
+                <section class="login-page">
+                    <!-- Login -->
+                    <div class="wrap-popup">
+                        <div class="top text-center">
+                            <img class="img-top" src="<?= $this->getViewFileUrl('images/ic-logo-white.jpg')?>" alt="PRVN" title="PRVN"/>
+                            <h2><?=__('Welcome to Pernod Ricard Việt Nam')?></h2>
+
+                            <!-- b2b-first-login -->
+                            <form class="form" id="b2b-first-login" data-mage-init='{"validation":{}}'>
+                                <div>
+                                    <div class="note-year mb-3"><?=__('You must enter company name and tax code to access the site')?></div>
+
+                                    <div class="form-group">
+                                        <input type="text" name="login[company_name]" placeholder="<?=__('Company Name')?>"
+                                            class="form-control v-validate"
+                                            value="<?=$block->getCompanyName()?>"
+                                            data-mage-init='{"mage/trim-input":{}}'
+                                            data-validate="{required:true}" />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input type="text" name="login[tax_code]" placeholder="<?=__('Tax Code')?>"
+                                            class="form-control v-validate"
+                                            value="<?=$block->getTaxCode()?>"
+                                            data-mage-init='{"mage/trim-input":{}}'
+                                            data-validate="{required:true}" />
+                                    </div>
+
+                                    <div class="form-group form-group-region-cart">
+                                        <?php
+                                            $regionId = 0;
+                                            echo $block->getRegions($regionId);
+                                        ?>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input type="text" name="address" placeholder="<?=__('Address')?>"
+                                            class="form-control v-validate"
+                                            value=""
+                                            data-mage-init='{"mage/trim-input":{}}'
+                                            data-validate="{required:true}" />
+                                    </div>
+
+                                    <button class="more-masonry btnSubmitLogin"><i class="fa fa-spinner loading fa-spin hide"></i> <?=__('Submit')?></button>
+                                </div>
+
+                                <div>
+                                    <img src="<?=$this->getViewFileUrl('images/glass.png')?>" alt="PRVN" title="PRVN"/>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </section>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "DrinksAndCo_Customer/js/login": {
+                "action": "<?= $block->getPostActionUrl()?>",
+                "selectorForm": "#custom-form-login",
+                "selectorMsg": ".msg-submit",
+                "btnSubmit": "#custom-form-login .btnSubmitLogin",
+                "actionB2B": "<?= $block->getPostActionUrl()?>",
+                "selectorFormB2B": "#b2b-first-login",
+                "btnSubmitB2B": "#b2b-first-login .btnSubmitLogin"
+            }
+        }
+    }
+</script>

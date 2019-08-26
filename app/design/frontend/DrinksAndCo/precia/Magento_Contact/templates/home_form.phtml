@@ -1,0 +1,68 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+/** @var \Magento\Contact\Block\ContactForm $block */
+?>
+
+<section class="head-page">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
+                <h2><?php echo __('Contact us');?></h2>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <!-- Nav -->
+                <nav class="nav-page">
+                    <ol class="list-unstyled">
+                        <li><a href="/">Home</a></li>
+                        <li class="active">Contact</li>
+                    </ol>
+                </nav>
+                <!-- End Nav -->
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <section class="contact-page">
+                    <h2>Contact Us</h2>
+                    <div class="info">Ut equidem lucilius accommodare vis. Mea ne offendit deserunt.</div>
+                    <form class="form contact"
+                        action="<?= $block->escapeUrl($block->getFormAction()) ?>"
+                        id="contact-form"
+                        method="post"
+                        data-hasrequired="<?= $block->escapeHtmlAttr(__('* Required Fields')) ?>"
+                        data-mage-init='{"validation":{}}'>
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                <div class="form-group">
+                                    <input name="name" id="name" placeholder="<?= $block->escapeHtml(__('Your Name *')) ?>" title="<?= $block->escapeHtmlAttr(__('Name')) ?>" value="<?= $block->escapeHtmlAttr($this->helper('Magento\Contact\Helper\Data')->getPostValue('name') ?: $this->helper('Magento\Contact\Helper\Data')->getUserName()) ?>" class="form-control" type="text" data-validate="{required:true}"/>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                <div class="form-group">
+                                    <input name="email" id="email" placeholder="<?= $block->escapeHtml(__('Your Email *')) ?>" title="<?= $block->escapeHtmlAttr(__('Email')) ?>" value="<?= $block->escapeHtmlAttr($this->helper('Magento\Contact\Helper\Data')->getPostValue('email') ?: $this->helper('Magento\Contact\Helper\Data')->getUserEmail()) ?>" class="form-control" type="email" data-validate="{required:true, 'validate-email':true}"/>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                <div class="form-group">
+                                    <textarea name="comment" id="comment" placeholder="<?= $block->escapeHtml(__('Message *')) ?>" title="<?= $block->escapeHtmlAttr(__('What’s on your mind?')) ?>" class="form-control"  rows="3" data-validate="{required:true}"><?= $block->escapeHtml($this->helper('Magento\Contact\Helper\Data')->getPostValue('comment')) ?></textarea>
+                                </div>
+                                <button class="btn" type="submit" title="<?= $block->escapeHtmlAttr(__('Submit')) ?>" class="action submit primary"><span><?= $block->escapeHtml(__('Submit')) ?></span></button>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Contact -->

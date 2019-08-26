@@ -1,0 +1,76 @@
+.ecg-manufacturer{
+  &.list{
+    margin-bottom: -5px;
+    border-bottom: 1px dashed @border_color;
+    padding-bottom: 64px;
+    margin-top: -19px;
+    .ecg-content{
+      margin: 0 -15px;
+      text-align: center;
+      margin-bottom: -30px;
+      .ecg-item{
+        padding:0 15px;
+        box-sizing: border-box;
+        width: 16%;
+        display: inline-block;
+        margin-bottom: 30px;
+        a{
+          font-size: 0;
+          line-height: 1;
+          opacity: 0.6;
+          img{
+            display: inline-block;
+            margin: 0 auto;
+          }
+          &:hover{
+            opacity: 1;
+          }
+        }
+      }
+    }
+    @media (max-width: 767px){
+      padding-bottom: 11px;
+    }
+  }
+}
+.ecg-block{
+  position: relative;
+  .ecg-manufacturer {
+    padding: 90px 0;
+    margin-top: 90px;
+  }
+  .background{
+    position: absolute;
+    top: 0;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    img{
+      position: absolute;
+      top: 0;
+      z-index: -1;
+      height: 100%;
+      width: 100%;      
+    }
+  }
+  @media (max-width: 767px){
+    .ecg-manufacturer {
+      padding: 50px 0;
+      margin-top: 50px;
+    }    
+  }
+}
+@media (max-width: 991px){
+  .ecg-manufacturer.list .ecg-content .ecg-item{
+    width: 30%;
+  }
+}
+@media(max-width: 440px){
+  .ecg-manufacturer.list .ecg-content .ecg-item{
+    width: 100%;
+    margin-bottom: 30px;
+  }
+  .ecg-manufacturer.list .ecg-content{
+    margin-bottom: -10px;
+  }
+}

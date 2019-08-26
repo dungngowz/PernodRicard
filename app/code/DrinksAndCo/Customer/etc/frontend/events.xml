@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../lib/internal/Magento/Framework/Event/etc/events.xsd">
+    <event name="controller_action_predispatch">
+        <observer name="check_login_persistent" instance="DrinksAndCo\Customer\Observer\CheckLoginPersistentObserver" />
+    </event>
+
+    <event name="customer_login_success">
+        <observer name="drinksandco_email_customer_login" instance="DrinksAndCo\Customer\Observer\CustomerLoginObserver"/>
+    </event>
+</config>

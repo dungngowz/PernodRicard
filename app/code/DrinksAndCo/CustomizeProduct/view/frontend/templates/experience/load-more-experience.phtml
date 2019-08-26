@@ -1,0 +1,20 @@
+<?php
+    $productCollections = $block->getProductsByCategory();
+?>
+
+<?php foreach($productCollections as $item){?>
+    <?php $url = $block->getUrlDetailProduct($item->getUrlKey()); ?>
+    <div class="it">
+        <div class="img">
+            <a href="<?=$url?>">
+                <img class="img-fluid" src="<?=$block->getImage($item, 'experiences_list_image')->getImageUrl();?>" alt="<?=$item->getName()?>" title="<?=$item->getName()?>"/>
+            </a>
+            <div>
+                <a href="<?=$url?>"><?=__('View detail')?></a>|
+                <a href="javascript:void(0)" class="add-to-cart" data-product_id="<?=$item->getId()?>"><i class="fa fa-spinner loading-addtocart fa-spin hide"></i> <?=__('Add to cart')?></a>
+            </div>
+        </div>
+        <a href="<?=$url?>"><?=$item->getName()?></a>
+        <span><?=number_format($item->getPrice())?>VNĐ</span>
+    </div>
+<?php } ?>

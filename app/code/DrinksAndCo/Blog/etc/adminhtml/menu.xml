@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Backend/etc/menu.xsd">
+    <menu>
+        <add id="DrinksAndCo_Blog::blog" title="News" module="DrinksAndCo_Blog" sortOrder="80" parent="Magento_Backend::content" resource="DrinksAndCo_Blog::blog_section"/>
+        <add id="DrinksAndCo_Blog::manage_category" title="Manage Categories" module="DrinksAndCo_Blog" sortOrder="10" parent="DrinksAndCo_Blog::blog" action="blog/category/" resource="DrinksAndCo_Blog::manage_category"/>
+        <add id="DrinksAndCo_Blog::manage_post" title="Manage Posts" module="DrinksAndCo_Blog" sortOrder="30" parent="DrinksAndCo_Blog::blog" action="blog/post/" resource="DrinksAndCo_Blog::manage_post"/>
+    </menu>
+</config>

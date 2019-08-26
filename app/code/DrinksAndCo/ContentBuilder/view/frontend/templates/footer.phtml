@@ -1,0 +1,35 @@
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 align-self-center">
+                <ul class="menu-foot list-unstyled">
+                    <li>
+                        <a href="<?=$block->getBaseUrl() . __('contact')?>"><?= __('Contact us')?></a>
+                    </li>
+                    <li>
+                        <a href="<?=$block->getBaseUrl() . __('privacy-policy-cookie-restriction-mode')?>"><?= __('Terms & Conditions')?></a>
+                    </li>
+                    <li>
+                        <a href="#"><?=__('DRINKING RESPONSIBLY')?></a>
+                    </li>
+                </ul>
+            </div>
+            <a class="scroll-top" href="javascript:void(0);">
+                <i class="fa fa-angle-up" aria-hidden="true"></i>
+            </a>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-10 col-xl-10 align-self-center">
+                <p><?=__('Pernod Ricard Vietnam Company Limited')?><br/><?=__('Floor 26, Vietcombank Tower, 05 Cong Truong Me Linh, Ben Nghe Ward, Ho Chi Minh City')?></p>
+                <!-- <p>© 2016 - Bản quyền của Công Ty Cổ Phần Pernod Ricard Việt Nam<br/>Giấy chứng nhận Đăng ký Kinh doanh số 0309532909 do Sở Kế hoạch và Đầu tư Thành phố Hồ Chí Minh cấp ngày 06/01/2010</p> -->
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2 align-self-center">
+                <a href="<?=$block->getBaseUrl()?>">
+                    <img src="<?php echo $this->getViewFileUrl('images/ic-bct.png'); ?>" alt="" title=""/>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- Block Invite Friend -->
+<?= $this->getLayout()->createBlock('DrinksAndCo\Customer\Block\InviteFriend')->setTemplate('invite-friend.phtml')->toHtml(); ?>

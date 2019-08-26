@@ -1,0 +1,176 @@
+.ecg-instagram.type-1{
+
+  .block-content{
+    margin:0 -15px;
+    .ecg-item-wrap{
+      &:before, &:after{
+        content: '';
+        clear: both;
+        display: table;
+      }
+      .ecg-item{
+        padding: 0 15px;
+        width: calc(100%/4);
+        float: left;
+        .content{
+          overflow: hidden;
+          cursor: pointer;
+          position: relative;
+          &:before {
+            content: "";
+            background: @title_color;
+            opacity: 0.8;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            height: 100%;
+            -moz-transform: translateY(-100%);
+            -o-transform: translateY(-100%);
+            -ms-transform: translateY(-100%);
+            -webkit-transform: translateY(-100%);
+            transform: translateY(-100%);
+            opacity: 0;
+            visibility: hidden;
+            .transition_default();
+          }
+
+          a{
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            opacity: 0;
+            text-align: center;
+            border-radius: 50%;
+            background: transparent;
+            font-size: 32px;
+            top: 50%;
+            left: 50%;
+            color: #fff;
+            margin-top: -15px;
+            margin-left: -15px;
+            -webkit-animation-duration: .3s;
+            animation-duration: .3s;
+            -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+          }
+          &:hover{
+            &:before{
+              -moz-transform: translateY(0);
+              -o-transform: translateY(0);
+              -ms-transform: translateY(0);
+              -webkit-transform: translateY(0);
+              transform: translateY(0);
+              opacity: 0.8;
+              visibility: visible;
+            }
+            a{
+              -webkit-animation-name: zoomIn;
+              animation-name: zoomIn;
+              opacity: 1;
+            }
+          }
+        }
+        &:nth-child(even){
+          margin-top: 45px;
+        }
+      }
+    }
+  }
+  @media (max-width: 767px){
+    .block-content .ecg-item-wrap .ecg-item{
+      width: 50%;
+    }
+  }
+}
+.ecg-instagram.type-2{
+  .block-content{
+    margin: 0;
+    .ecg-item-wrap{
+      &:before, &:after{
+        content: '';
+        clear: both;
+        display: table;
+      }
+      .ecg-item{
+        padding: 0;
+        width: calc(100%/8);
+        float: left;
+        .content{
+          overflow: hidden;
+          cursor: pointer;
+          position: relative;
+          &:before {
+            content: "";
+            background: @title_color;
+            opacity: 0.8;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            height: 100%;
+            -moz-transform: translateY(-100%);
+            -o-transform: translateY(-100%);
+            -ms-transform: translateY(-100%);
+            -webkit-transform: translateY(-100%);
+            transform: translateY(-100%);
+            opacity: 0;
+            visibility: hidden;
+            .transition_default();
+          }
+
+          a{
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            opacity: 0;
+            text-align: center;
+            border-radius: 50%;
+            background: transparent;
+            font-size: 32px;
+            top: 50%;
+            left: 50%;
+            color: #fff;
+            margin-top: -15px;
+            margin-left: -15px;
+            -webkit-animation-duration: .3s;
+            animation-duration: .3s;
+            -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+          }
+          &:hover{
+            &:before{
+              -moz-transform: translateY(0);
+              -o-transform: translateY(0);
+              -ms-transform: translateY(0);
+              -webkit-transform: translateY(0);
+              transform: translateY(0);
+              opacity: 0.8;
+              visibility: visible;
+            }
+            a{
+              -webkit-animation-name: zoomIn;
+              animation-name: zoomIn;
+              opacity: 1;
+            }
+          }
+        }        
+      }
+    }
+  }
+  @media (max-width: 767px){
+    .block-content .ecg-item-wrap .ecg-item{
+      width: 50%;
+    }
+  }
+}
+@media (min-width: 992px) {
+  .ecg-instagram.type-1{
+    .block-content{
+      .ecg-item-wrap{
+        position: relative;
+        width: 100%;
+      }
+    }
+  }
+}

@@ -1,0 +1,35 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var \Magento\Review\Block\Product\ReviewRenderer $block */
+
+$url = $block->getReviewsUrl() . '#reviews';
+$urlForm = $block->getReviewsUrl() . '#review-form';
+?>
+<?php if ($block->getReviewsCount()): ?>
+    <?php $rating = $block->getRatingSummary(); ?>
+    <div class="product-reviews-summary short<?= !$rating ? ' no-rating' : '' ?>">
+        <?php if ($rating):?>
+            <div class="rating-summary">
+                <span class="label"><span><?= $block->escapeHtml(__('Rating')) ?>:</span></span>
+                <div class="rating-result" title="<?= $block->escapeHtmlAttr($rating) ?>%">
+                    <span style="width:<?= $block->escapeHtmlAttr($rating) ?>%"><span><?= $block->escapeHtml($rating) ?>%</span></span>
+                </div>
+            </div>
+        <?php endif;?>
+    </div>
+<?php elseif ($block->getDisplayIfEmpty()): ?>
+    <?php $rating = $block->getRatingSummary(); ?>
+    <div class="product-reviews-summary short empty">
+        <div class="rating-summary">
+            <div class="rating-result">
+                <span style="width:0%"><span><?= $block->escapeHtml($rating) ?>%</span></span>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * DrinksAndCo_Agent extension
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category  DrinksAndCo
+ * @package   DrinksAndCo_Agent
+ * @copyright Copyright (c) 2019
+ * @license   http://opensource.org/licenses/mit-license.php MIT License
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="DrinksAndCo_Agent::agent" title="Agent information" module="DrinksAndCo_Agent" sortOrder="0" resource="DrinksAndCo_Agent::agent" parent="Magento_Backend::content"/>
+        <add id="DrinksAndCo_Agent::agent_infomation" title="Infomations" module="DrinksAndCo_Agent" sortOrder="10" action="drinksandco_agent/infomation" resource="DrinksAndCo_Agent::agent_infomation" parent="DrinksAndCo_Agent::agent"/>
+    </menu>
+</config>

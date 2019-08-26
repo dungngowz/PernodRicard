@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="catalog.compare.sidebar" remove="true"/>
+        <referenceBlock name="wishlist_sidebar" remove="true"/>
+        <referenceBlock name="sale.reorder.sidebar" remove="true"/>
+        <referenceBlock name="page.main.title" remove="true"/>
+
+        <referenceContainer name="sidebar.additional" remove="true">
+            <block class="DrinksAndCo\History\Block\Sidebar" name="history.sidebar" template="DrinksAndCo_History::sidebar.phtml" after="-"/>
+        </referenceContainer>
+
+        <referenceContainer name="content">
+            <block class="DrinksAndCo\History\Block\Post\View" name="post_view" template="DrinksAndCo_History::post/view.phtml">
+                <!-- <block class="DrinksAndCo\History\Block\Post\View\Comment" name="post_view_comment" template="DrinksAndCo_History::post/view/comment.phtml">
+                    <block class="DrinksAndCo\History\Block\Post\View\Commentlist" name="post_view_comment_list" template="DrinksAndCo_History::post/view/comment/list.phtml"/>
+                </block> -->
+            </block>
+        </referenceContainer>
+    </body>
+</page>

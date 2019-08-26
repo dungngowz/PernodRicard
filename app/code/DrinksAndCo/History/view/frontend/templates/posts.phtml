@@ -1,0 +1,66 @@
+<?php
+$collection = $block->getCollection();
+// $categories = $block->getCatetories();
+// $lastPageNumber = $collection->getLastPageNumber();
+// foreach ( $categories as $cate)
+// {
+//     var_dump($cate->getCategoryUrl());
+//     var_dump($cate->getTitle());
+// }
+// foreach($collection as $item)
+// {
+//     var_dump($item->getCatetories()->getFirstItem()->getUrlKey());
+// }
+?>
+
+<!-- Head Title -->
+<!-- <section class="head-page">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
+                <h2><?=__('Brand Histories')?></h2>
+            </div>
+        </div>
+    </div>
+</section> -->
+<!--End Head Title -->
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <!-- Nav -->
+                <nav class="nav-page">
+                    <ol class="list-unstyled">
+                        <li><a href="#"><?=__('Home');?></a></li>
+                        <li class="active"><?=__("History");?></li>
+                    </ol>
+                </nav>
+                <!-- End Nav -->
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <section class="history-page">
+                
+                    <img class="img-fluid" src="<?php echo $this->getViewFileUrl('images/h-full.jpg'); ?>" alt="" title=""/>
+                    <p><?= __("Pernod Ricard has built a unique Premium brand portfolio with international reach. This portfolio, governed by our House of Brands concept, is today one of the most comprehensive on the market, covering every category of wines and spirits. It is organised around four moments of convivialité, designed to offer “the right product at the right time for the right consumer”, regardless of that consumer’s market.");?></p>
+                    <div class="row text-center align-items-center">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                            <span><?=__("Discover the fascinating stories behind each unique brand</br>that makes up the Pernod Ricard family.");?></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <?php  foreach ($collection as $post):  ?>
+                            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4  history-item">
+                                <a href="<?php echo $post->getPostUrlWithNoCategory(); ?>">
+                                <img class="img-fluid" src="<?php echo $post->getThumbnailUrl(); ?>" alt="<?php echo $post->getTitle() ?>" title="<?php echo $post->getTitle() ?>"/>
+                                <div class="title"><?php echo $post->getTitle() ?></div>
+                                </a>
+                            </div>
+                        <?php endforeach;?>
+                    </div>
+                    <p><?=__("With the most comprehensive portfolio in the industry, management and resource allocation continue to be a critical challenge. Our goal is to allocate properly the resources within our portfolio, based on our priorities and the opportunities that arise in each market");?></p>
+                </section>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Contact -->

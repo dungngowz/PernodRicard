@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * DrinksAndCo_Agent extension
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category  DrinksAndCo
+ * @package   DrinksAndCo_Agent
+ * @copyright Copyright (c) 2019
+ * @license   http://opensource.org/licenses/mit-license.php MIT License
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="DrinksAndCo\Agent\Api\InfomationRepositoryInterface" type="DrinksAndCo\Agent\Model\InfomationRepository"/>
+    <preference for="DrinksAndCo\Agent\Api\Data\InfomationInterface" type="DrinksAndCo\Agent\Model\Infomation"/>
+    <preference for="DrinksAndCo\Agent\Api\Data\InfomationSearchResultInterface" type="Magento\Framework\Api\SearchResults"/>
+    <type name="DrinksAndCo\Agent\Model\ResourceModel\Infomation\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">drinksandco_agent_infomation</argument>
+            <argument name="eventPrefix" xsi:type="string">drinksandco_agent_infomation_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">infomation_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">DrinksAndCo\Agent\Model\ResourceModel\Infomation</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="drinksandco_agent_infomation_listing_data_source" xsi:type="string">DrinksAndCo\Agent\Model\ResourceModel\Infomation\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

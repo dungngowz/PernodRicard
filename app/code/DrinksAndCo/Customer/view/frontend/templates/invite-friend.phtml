@@ -1,0 +1,88 @@
+<!-- Invite -->
+<section style="display: none;" id="popup-invite">
+    <div class="wrap-popup">
+        <div class="top text-center">
+            <img class="img-top" src="<?php echo $this->getViewFileUrl('images/ic-logo-white.jpg'); ?>" alt="DrinksAndCo" title="DrinksAndCo"/>
+            
+            <!-- Submit invitation form -->
+            <h2><?=__('Invite friend')?></h2>
+            <form class="form" id="invitation-form" data-mage-init='{"validation":{}}'>
+                <div>
+                    <div class="form-group form-group-region mt-4">
+                        <?= $block->getRegion()?>
+                    </div>
+
+                    <div class="form-group">
+                        <input name="telephone" type="number" placeholder="<?=__('Phone number')?>"
+                            class="form-control v-validate validate-number maximum-length-15 minimum-length-10 validate-length" 
+                            data-mage-init='{"mage/trim-input":{}}'
+                            data-validate="{required:true}" 
+                            data-msg-required="<?=__('Please enter the phone number')?>"
+                            data-msg-validate-length="<?=__('Please enter <= 15 characters')?>"/>
+                    </div>
+
+                    <div class="form-group">
+                        <input name="email" type="email" class="form-control v-validate" placeholder="Email"
+                            data-mage-init='{"mage/trim-input":{}}'
+                            data-validate="{required:true, 'validate-email': true}"
+                            data-msg-required="<?=__('Please enter your email')?>"
+                            data-msg-validate-email="<?=__('Invalid email')?>" />
+                    </div>
+
+                    <div class="msg-submit msg-submit-invitation mb-4"></div>
+
+                    <button class="more-masonry btn-send-invitation"><i class="fa fa-spinner loading-invite fa-spin hide"></i> <?=__('Send invitation')?></button>
+
+                    <a class="more-masonry btn-close-fancybox" href="javascript:void(0)"><?=__('Skip')?></a>
+                </div>
+                <div>
+                    <img src="<?php echo $this->getViewFileUrl('images/glass.png'); ?>" alt="DrinksAndCo" title="DrinksAndCo"/>
+                </div>
+            </form>
+
+            <!-- Max invitation form -->
+            <form id="max-invite-form" class="hide" style="padding-top: 34px;" action="">
+                <div class="text-left">
+                    <h2><?=__('Your request is over the limitation')?></h2>
+                    <!-- <div class="number-invite">5 bottles standard wine</div> -->
+                    <div class="note-invite"><?=__('Your request is over the limitation');?>
+                    </div>
+                    <a class="more-masonry btn-close-fancybox-and-reload" href="javascript:void(0)">OK</a>
+                </div>
+                <div>
+                    <img src="<?php echo $this->getViewFileUrl('images/glass.png'); ?>" alt="DrinksAndCo" title="DrinksAndCo"/>
+                </div>
+            </form>
+
+            <!-- Success invitation form -->
+            <form id="success-invite-form" class="hide" style="padding-top: 34px;" action="">
+                <div class="text-left">
+                    <h2><?=__('You have successfully sent an invitation')?></h2>
+                    <!-- <div class="number-invite">5 bottles standard wine</div> -->
+                    <div class="note-invite"><?=__('You have successfully sent an invitation')?>
+                    </div>
+                    <a class="more-masonry btn-close-fancybox" href="javascript:void(0)">OK</a>
+                </div>
+                <div>
+                    <img src="<?php echo $this->getViewFileUrl('images/glass.png'); ?>" alt="DrinksAndCo" title="DrinksAndCo"/>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</section>
+
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "DrinksAndCo_Customer/js/invite-friend": {
+                "btnSubmit": ".btn-send-invitation",
+                "action": "<?= $block->getPostActionUrl()?>",
+                "selectorForm": "#invitation-form",
+                "selectorMsg": ".msg-submit-invitation",
+                "selectorClosePopup": ".btn-close-fancybox",
+                "selectorClosePopupAdnReload": ".btn-close-fancybox-and-reload"
+            }
+        }
+    }
+</script>

@@ -1,0 +1,106 @@
+.header-logo{
+  display: inline-block;
+  min-height: 75px;
+  &:before{
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    min-height: inherit;
+    width: 0;
+  }
+  .logo{
+    vertical-align: middle;
+    margin: 0;
+    display: inline-block;
+    max-width: 100%;
+    float: none;
+  }
+}
+
+.header-panel{
+    .action-show{
+      height: 100px;
+      display: inline-block;
+      text-align: center;
+      line-height: 100px;
+      font-size: 20px;
+      color: @text_color;
+      .transition_default();
+      padding: 0 12px;
+      &:hover{
+        color: @secondary_color;
+      }
+    }
+  ul {
+      list-style: none;
+      padding-left: 0;
+      li{
+        margin-bottom: 5px;
+      }
+  }    
+  .header-panel-content{
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    left: auto;
+    right: 0;
+    border:0;
+    border-top: 3px solid @primary_color;
+    transform: translateY(20px);
+    -webkit-transform: translateY(20px);
+    -ms-transform: translateY(20px);
+    padding: 13px 20px 0;
+    box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.35);
+    .transition_default();
+    margin: 0;
+    width: 220px;
+    background: #fff;
+    &:before {
+      content: '';
+      position: absolute;
+      top: -9px;
+      left: auto;
+      right: 14px;
+      width: 0;
+      height: 0;
+      margin: auto;
+      border-bottom: 9px solid @primary_color;
+      border-left: 0 solid transparent!important;
+      border-right: 0 solid transparent!important;
+      border-top: 0 solid transparent!important;
+      .transition_default();
+    }
+    & > div{
+      border-bottom: 1px solid #e1e1e1;
+      margin-bottom: 10px;
+      &:last-child{
+        border-bottom: none;
+        margin-bottom: 20px;
+      }
+    }
+    i{
+      padding-right: 5px;
+    }
+    .switcher-trigger{
+      margin-bottom: 5px;
+      color: @title_color;
+      font-weight: bold;
+    }
+  }
+  &.active{
+    .header-panel-content{
+      transform: translateY(0);
+      -webkit-transform: translateY(0);
+      -ms-transform: translateY(0);
+      opacity: 1;
+      visibility: visible;
+      &:before {
+        border-left: 9px solid transparent!important;
+        border-right: 9px solid transparent!important;
+        border-top: 0 solid transparent!important;
+      }
+    }
+
+  }
+}

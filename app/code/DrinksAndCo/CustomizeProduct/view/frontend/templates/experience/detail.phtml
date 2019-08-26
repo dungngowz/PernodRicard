@@ -1,0 +1,142 @@
+<?php
+    $detailProduct = $block->getDetailProduct();
+    $breadcrumbs = $block->getBreadcrumbsExpDetail();
+    $productimages = $detailProduct->getMediaGalleryImages();
+?>
+
+<section>
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <!-- Nav -->
+                <nav class="nav-page">
+                    <ol class="list-unstyled">
+                        <li><a href="<?=$block->getBaseUrl()?>"><?=__('Home')?></a></li>
+                        <?php foreach($breadcrumbs as $k => $item){?>
+                            <li><a href="<?=$item['url']?>"><?=$item['text']?></a></li>
+                        <?php } ?>
+                        <li class="active"><?=$detailProduct->getName()?></li>
+                    </ol>
+                </nav>
+            </div>
+
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <form class="form" id="form-add-to-cart">
+                    <section class="product-detail">
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                                <?php 
+                                    if(count($productimages) > 0){
+                                        foreach($productimages as $productimage){
+                                            ?>
+                                                <div data-old="<?=$productimage['url']?>" class="img-detail">
+                                                    <img class="img-fluid" src="<?=$productimage['url']?>" 
+                                                        alt="<?=$detailProduct->getName()?>" title="<?=$detailProduct->getName()?>"/>
+                                                </div>
+                                            <?php
+                                            break;
+                                        }
+                                    }
+                                ?>
+                            </div>
+
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                                <div class="info-detail">
+                                    <h1><?=$detailProduct->getName()?></h1>
+                                    <div class="price-detail"><?=number_format($detailProduct->getPrice())?> VNĐ</div>
+
+                                    <div class="op-detail select-detail">
+                                        <input type="hidden" name="product_id" value="<?=$detailProduct->getId()?>"/>
+                                        <select class="form-control" name="qty" id="qty">
+                                            <?php for($i=1; $i< 20; $i++){?>
+                                                <option value="<?=$i?>"><?=$i?></option>
+                                            <?php } ?>
+                                        </select>
+                                        <a href="javascript:void(0)" class="btn-add-to-cart"><i class="fa fa-spinner loading-addtocart fa-spin hide"></i> <?=__('Book now')?></a>
+                                    </div>
+
+                                    <div class="wrap-information">
+                                        <div class="op-detail">
+                                            <span><?=__('Description')?>:</span> 
+                                            <?=strip_tags($detailProduct->getDescription())?>
+                                        </div>
+
+                                        <div class="op-detail">
+                                            <span><?=__('Languages')?> :</span> 
+                                            <?php 
+                                                $attr = $detailProduct->getCustomAttribute('languages');
+                                                echo $attr ? $attr->getValue() : '';
+                                            ?>
+                                        </div>
+                                        <div class="op-detail">
+                                            <span><?=__('Location')?> :</span> 
+                                            <?php 
+                                                $attr = $detailProduct->getCustomAttribute('location');
+                                                echo $attr ? $attr->getValue() : '';
+                                            ?>
+                                        </div>
+                                        <div class="op-detail">
+                                            <span><?=__('Date')?> :</span> 
+                                            <?php 
+                                                $attr = $detailProduct->getCustomAttribute('date');
+                                                echo $attr ? $attr->getValue() : '';
+                                            ?>
+                                        </div>
+                                        <div class="op-detail">
+                                            <span><?=__('Time')?> :</span> 
+                                            <?php 
+                                                $attr = $detailProduct->getCustomAttribute('time');
+                                                echo $attr ? $attr->getValue() : '';
+                                            ?>
+                                        </div>
+                                    </div>
+                                    
+                                    <?php if(count($productimages) > 1){?>
+                                        <div class="list-img">
+                                            <?php foreach($productimages as $productimage){?>
+                                                <a href="javascript:void(0)">
+                                                    <img src="<?=$productimage['url']?>" alt="<?=$detailProduct->getName()?>" title="<?=$detailProduct->getName()?>"/>
+                                                </a>
+                                            <?php } ?>
+                                        </div>
+                                    <?php } ?>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    
+                </form>
+
+                <?php include ($block->getTemplateFile('DrinksAndCo_CustomizeProduct::experience/related-experiences.phtml')); ?>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Popup response consulted -->
+<a class="btn-popup-get-consulted" data-fancybox data-src="#popup-get-consulted" href="javascript:;" style="display: none;"></a>
+<section style="display: none;" id="popup-get-consulted">
+    <div class="wrap-popup update">
+        <div class="text-center">
+            <img class="img-fluid" src="<?php echo $this->getViewFileUrl('images/ic-logo-white.jpg'); ?>" alt="DrinksAndCo" title="DrinksAndCo"/>
+            <h2><?=__('Your cart has been updated')?></h2>
+            <a class="start-shop" href="<?=$block->getInfomationConfirmUrl()?>"><?=__('View your cart')?></a>
+            <a class="start-shop btn-close-fancybox" href="javascript:void(0)"><?=__('Continue shopping')?></a>
+        </div>
+    </div>
+
+</section>
+
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "DrinksAndCo_CustomizeCart/js/customize-cart": {
+                "action": "<?= $block->getPostActionAddToCartUrl()?>",
+                "selectorForm": "#form-add-to-cart",
+                "btnSubmit": ".btn-add-to-cart"
+            }
+        }
+    }
+</script>

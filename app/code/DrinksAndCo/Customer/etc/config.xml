@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <customer_invite>
+            <general_settings>
+                <staff>20</staff>
+                <friend_and_family>0</friend_and_family>
+                <b2b>30</b2b>
+                <line_manager>40</line_manager>
+            </general_settings>
+            <email_settings>
+                <email_system_1>nobitaprotein@gmail.com</email_system_1>
+                <email_system_2>nobitaprotein@gmail.com</email_system_2>
+                <email_system_3>nobitaprotein@gmail.com</email_system_3>
+            </email_settings>
+            <price_settings>
+                <staff>5000000</staff>
+                <friend_and_family>3000000</friend_and_family>
+                <b2b>10000000</b2b>
+                <line_manager>20000000</line_manager>
+            </price_settings>
+        </customer_invite>
+    </default>
+</config>

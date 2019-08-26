@@ -1,0 +1,55 @@
+<?php
+$collection = $block->getCollection();
+?>
+<?php if (!count($collection)): ?>
+    <div class="message info empty">
+        <div><?php echo __('Have no posts.') ?></div>
+    </div>
+<?php else: ?>
+    <div class="experience-list">
+        <?php foreach ($collection as $post): ?>
+            <div class="ecg-experience-post">
+                <div class="post-image">
+                    <img src="<?php echo $post->getImageUrl(); ?>" alt="<?php echo $post->getTitle() ?>">
+                </div>
+
+                <h2 class="post-title">
+                    <a class="post-title-link" title="<?php echo $post->getTitle(); ?>" href="<?php echo $post->getPostUrlWithNoCategory(); ?>"><?php echo $post->getTitle(); ?></a>
+                </h2>
+                <div class="post-info">
+                    <div class="created_at">
+                        <?php if ($post->getUpdatedByUser()): ?>
+                            <?php echo __('%1', $block->formatDate($post->getCreatedAt(), \IntlDateFormatter::MEDIUM, false)); ?>&nbsp;<?php echo __('by: %1', $post->getUpdatedByUser()); ?>
+                        <?php else: ?>
+                            <?php echo __('%1', $block->formatDate($post->getCreatedAt(), \IntlDateFormatter::MEDIUM, false)); ?>&nbsp;<?php echo __('by %1', $post->getUser()); ?>
+                        <?php endif; ?>
+                    </div>
+					<?php $categories = $post->getCatetories(); ?>
+					<?php if (count($categories)): ?>
+						<div class="posted-in">
+							<?php echo __('Posted In: ') ?>
+							<?php foreach ($categories as $category): ?>
+								<a title="<?php echo $category->getTitle(); ?>" href="<?php echo $category->getCategoryUrl(); ?>"><?php echo $category->getTitle(); ?></a>
+							<?php endforeach; ?>
+						</div>
+					<?php endif; ?>
+					
+					<?php if ($this->getConfig('comment_settings/enabled')): ?>
+						<div class="comment-link">
+                            <a href="<?php echo $post->getPostUrlWithNoCategory(); ?>#comment"><?php echo $post->getCommentCount(); if($post->getCommentCount() >1){echo __(' Comments');}else{echo __(' Comment');}?></a>
+						</div>
+					<?php endif; ?>
+                </div>
+                <?php if ($post->getShortContent()): ?>
+                    <div class="post-content">
+                        <?php echo $post->getShortContent(); ?>
+						<div class="post-link">
+							<a class="readmore" title="<?php echo __('Read More'); ?>" href="<?php echo $post->getPostUrlWithNoCategory(); ?>"><?php echo __('Read More'); ?></a>
+						</div>
+                    </div>
+                <?php endif; ?>
+            </div>
+        <?php endforeach; ?>
+    </div>
+    <div class="experience-post-list-toolbar toolbar bottom"><?php echo $block->getPagerHtml(); ?></div>
+<?php endif; ?>

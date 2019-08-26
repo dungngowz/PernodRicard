@@ -1,0 +1,37 @@
+
+.login-container {
+	.block-customer-login, .block-new-customer {
+	    border: 1px solid #ddd;
+	    padding: 30px 30px 45px;
+	    margin-bottom: 0;
+	    box-sizing: border-box;
+	}
+	.actions-toolbar .secondary a.action {
+	    margin-top: 12px;
+	}
+	.fieldset:after {
+	    margin-bottom: -8px;
+	    margin-top: 25px;
+	}
+}
+.block-customer-login{
+    .login .actions-toolbar{
+        padding-top: 14px;
+    }
+}
+.login-container, .amazon-validate-container {
+	.block .block-title {
+	    font-size: 20px;
+	    margin-bottom: 22px;
+	}
+}
+.amazon-validate-container .block .block-title strong, .login-container .block .block-title strong {
+    font-weight: 600;
+    font-family: @font_title;
+    color: @title_color;
+}
+@media (max-width: 767px){
+	.login-container .block-customer-login{
+		margin-bottom: 30px;
+	}
+}

@@ -1,0 +1,18 @@
+<?php
+    $productCollections = $block->getProductsByCategory();
+?>
+
+<?php foreach($productCollections as $item){?>
+    <?php $url = $item->getProductUrl(); ?>
+    <div class="it">
+        <div class="img">
+            <img class="img-fluid" src="<?=$block->getImage($item);?>" alt="<?=$item->getName()?>" title="<?=$item->getName()?>"/>
+            <div>
+                <a href="<?=$url?>"><?=__('View detail')?></a>|
+                <a href="#"><?=__('Add to cart')?></a>
+            </div>
+        </div>
+        <a href="<?=$url?>"><?=$item->getName()?></a>
+        <span><?=number_format($item->getPrice())?> VNĐ</span>
+    </div>
+<?php } ?>

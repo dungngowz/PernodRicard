@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Backend/etc/menu.xsd">
+    <menu>
+        <add id="DrinksAndCo_News::news" title="News" module="DrinksAndCo_News" sortOrder="80" parent="Magento_Backend::content" resource="DrinksAndCo_News::news"/>
+        <add id="DrinksAndCo_News::manage_post" title="Manage Posts" module="DrinksAndCo_News" sortOrder="10" parent="DrinksAndCo_News::news" action="news/post/" resource="DrinksAndCo_News::manage_post"/>
+        <!-- <add id="DrinksAndCo_News::manage_comment" title="Manage Comments" module="DrinksAndCo_News" sortOrder="20" parent="DrinksAndCo_News::news" action="news/comment/" resource="DrinksAndCo_News::manage_comment"/> -->
+        <add id="DrinksAndCo_News::manage_category" title="Manage Categories" module="DrinksAndCo_News" sortOrder="30" parent="DrinksAndCo_News::news" action="news/category/" resource="DrinksAndCo_News::manage_category"/>
+        <!--<add id="DrinksAndCo_News::configuration" title="Configuration" module="DrinksAndCo_News" sortOrder="40" parent="DrinksAndCo_News::news" action="adminhtml/system_config/edit/section/news" resource="DrinksAndCo_News::configuration"/>-->
+    </menu>
+</config>

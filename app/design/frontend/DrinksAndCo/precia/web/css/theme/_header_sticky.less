@@ -1,0 +1,99 @@
+/* TYPE 1*/
+@media (min-width: 992px) {
+  .sticky-true{
+    #header.allow-sticky{
+      &.type-1, &.type-2{
+        margin-bottom: 0;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 999;
+        box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.4);
+        background: #fff;
+      }
+      &.type-2{
+        background: #333;
+        //   #ecg-search .block-search-top a,
+        //   .header-panel .action-show,
+        //   #header-minicart .minicart-wrapper .action.showcart,
+        //   #header-minicart .minicart-wrapper .action.showcart .ecg-counter.qty,
+        //   .nav-toggle:before{
+        //     color: @title_color;
+        //   }      
+        //   #header-minicart .minicart-wrapper .action.showcart > i{
+        //     border-color: @border_color;
+        //   }
+        // @media (min-width: 992px){
+        //   #megamenu > ul > li > a{
+        //     color: @title_color;
+        //   }      
+        //   #megamenu > ul > li > a:after{
+        //     background: @border_color;
+        //   }
+        // }        
+      }
+    }
+  }
+}
+
+/* TYPE 2*/
+// @media (min-width: 992px) {
+//   #header.allow-sticky .header-content{
+//     .transition_default();
+//   }
+//   .sticky-true{
+//     #header.allow-sticky{
+//       &.type-2{
+//         .header-content{
+//           position: fixed;
+//           top:0;
+//           width: 100%;
+//           z-index: 999;
+//           background: rgba(49, 58, 60, 1);
+//           box-shadow: 0 0 7px 0 rgba(0,0,0,0.4);
+//           .nav-sections{
+//             background: none;
+//           }
+//         }
+//         .header-logo {
+//           text-align: left;
+//           border-right: none;
+//         }    
+//         .header-content-group{
+//           text-align: right;
+//           border-left: none;          
+//         }    
+//       }
+//     }
+//   }
+//   .sticky-true:not(.cms-index-index) #header.allow-sticky.type-2 .header-content{
+//     background: #fff;
+//   }
+// }
+
+/* TYPE 3*/
+@media (min-width: 992px) {
+  #header.allow-sticky .header-content{
+    .transition_default();
+  }
+  .sticky-true{
+    #header.allow-sticky{
+      margin-bottom: 75px;
+      .transition_default();
+      &.type-3{
+        .header-content{
+          position: fixed;
+          top:0;
+          width: 100%;
+          left: 0;
+          background: #fff;
+          z-index: 99;
+          box-shadow: 0 0 7px 0 rgba(0,0,0,0.4);
+        }
+      }
+    }
+  }
+  .sticky-true:not(.cms-index-index) #header.allow-sticky.type-3 .header-content{
+    background: #fff;
+  }
+}

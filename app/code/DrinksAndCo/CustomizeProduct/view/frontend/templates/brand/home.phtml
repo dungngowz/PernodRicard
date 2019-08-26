@@ -1,0 +1,20 @@
+<?php
+    $getThumbBrandActive = $block->getThumbBrandActive();
+    $topBrands = $block->getTopBrands();
+    if($topBrands){
+?>
+
+<section class="slider-bot-home">
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <?php foreach($topBrands as $item){?>
+                <div class="swiper-slide">
+                    <a href="<?=$item->getUrl()?>">
+                        <img src="<?= $item->getImageUrl() ?>" alt="<?= $item->getName()?>" title="<?= $item->getName()?>"/>
+                    </a>
+                </div>
+            <?php } ?>
+        </div>
+    </div>
+</section>
+<?php } ?>

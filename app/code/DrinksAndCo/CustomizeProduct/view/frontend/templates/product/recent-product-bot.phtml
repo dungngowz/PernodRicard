@@ -1,0 +1,17 @@
+<?php
+    $recentProducts = $block->getRecentProduct();
+    if($recentProducts){
+?>
+<section class="recent-product bot tt-page">
+    <h4><?=__('Recent Products')?></h4>
+
+    <?php foreach($recentProducts as $item){?>
+        <div class="it">
+            <a href="<?=$item->getProductUrl()?>">
+                <img src="<?=$block->getImage($item);?>" alt="<?=$item->getName()?>" title="<?=$item->getName()?>"/>
+                <span><?=$item->getName()?></span>
+            </a>
+        </div>
+    <?php } ?>
+</section>
+<?php } ?>

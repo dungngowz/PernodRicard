@@ -1,0 +1,19 @@
+<?php
+    $categoryLinks = $block->getCategoryLinks();
+?>
+<?php if (count($categoryLinks)): ?>
+    <div id="blog-sidebar-recent-posts" class="block widget blog-sidebar-block category">
+        <div class="ecg-block-title">
+            <strong class="blog-sidebar-block-title"><?php echo $block->escapeHtml(__('Categories')) ?></strong>
+        </div>
+        <div class="block-content blog-sidebar-block-content">
+            <ul class="block-recent-posts">
+                <?php foreach ($categoryLinks as $_link): ?>
+                    <li class="block-recent-posts-item">
+                        <?php echo $_link; ?>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+    </div>
+<?php endif; ?>

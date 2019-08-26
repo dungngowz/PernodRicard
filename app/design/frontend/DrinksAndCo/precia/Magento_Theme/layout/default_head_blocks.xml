@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <!-- <meta charset="utf-8"/> -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+        <remove src="css/styles-m.css" />
+        <remove src="css/styles-l.css" />
+        <remove src="css/web.css" />
+        <remove src="js/web.js" />
+
+        <css src="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Raleway:300,400,500,600,700" src_type="url"/>
+        <css src="css/font-awesome.min.css" />
+        <css src="css/ionicons.min.css" />
+        <css src="css/bootstrap.min.css" />
+        <css src="css/jquery.fancybox.min.css" />
+        <css src="css/swiper.min.css" />
+        <css src="css/styles.css" />
+        <css src="css/responsive.css" />
+        <css src="css/override.css" />
+
+        <!-- <script src="js/swiper.min.js"></script> -->
+        <script src="js/main.js" />
+    </head>
+</page>

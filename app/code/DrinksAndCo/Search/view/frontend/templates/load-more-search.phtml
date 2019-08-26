@@ -1,0 +1,17 @@
+<?php
+    $collection = $block->getSearch();
+?>
+
+<?php  foreach ($collection as $post): 
+     ?>
+    <div class="it">
+        <a href="<?php echo $post->getPostUrl(); ?>">
+            <img class="img-fluid news-item-img" src="<? if($post->getType() != 'product')  echo $post->getThumbnailUrl(); else echo $post->getThumbnailProduct();   ?>" alt="<?php echo $post->getTitle() ?>">
+        </a>
+        <div>
+        </div>
+        <a href="<?php echo $post->getPostUrl(); ?>">
+            <?php echo $post->getTitle(); ?>
+        </a>
+    </div>
+<?php endforeach;?>

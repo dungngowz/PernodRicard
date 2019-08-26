@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * acl
+ * @copyright Copyright © 1989 Staempfli. All rights reserved.
+ * @author    dung.ngowz@gmail.com
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="DrinksAndCo_Search::data" title="Data" sortOrder="10" />
+            </resource>
+        </resources>
+    </acl>
+</config>

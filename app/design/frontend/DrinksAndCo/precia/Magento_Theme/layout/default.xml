@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+    <body>
+
+        <!-- =========== Override Header ===============  -->
+        <referenceBlock name="top.links" remove="true"/>
+        <referenceBlock name="head.additional" remove="true"/>
+        <referenceContainer name="header.container" remove="true"/>
+        <referenceBlock name="skip_to_content" remove="true"/>
+        <referenceContainer name="page.top" remove="true" />
+
+
+        <referenceContainer name="page.wrapper">
+            <!-- <block class="Magento\Store\Block\Switcher" name="store_language" as="store_language" template="DrinksAndCo_ContentBuilder::languages_switcher.phtml" before="main.content"/> -->
+            <block class="DrinksAndCo\ContentBuilder\Block\Header" name="ecg.header" template="DrinksAndCo_ContentBuilder::header.phtml" before="main.content" />
+        </referenceContainer>
+
+
+        <!-- ============== Override Content ==============  -->
+        <referenceContainer name="page.main.title" remove="true"/>
+
+        <!-- ============== Override Footer ==============  -->
+        <referenceContainer name="before.body.end">
+            <block class="DrinksAndCo\ContentBuilder\Block\Footer" name="ecg.footer" template="DrinksAndCo_ContentBuilder::footer.phtml" />
+        </referenceContainer>
+
+        <referenceBlock name="footer_links" remove="true"/>
+        <referenceBlock name="form.subscribe" remove="true"/>
+        <referenceBlock name="copyright" remove="true"/>
+
+    </body>
+</page>

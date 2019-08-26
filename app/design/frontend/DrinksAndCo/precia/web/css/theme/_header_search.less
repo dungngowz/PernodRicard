@@ -1,0 +1,133 @@
+#ecg-search{
+  display: inline-block;
+  .block-search-top{
+    a{
+      height: 100px;
+      display: inline-block;
+      text-align: center;
+      line-height: 100px;
+      font-size: 20px;
+      color: @text_color;
+      padding: 0 12px;
+    }
+  }
+  .block-content{
+    text-align: left;
+    display: block;
+    z-index: 100;
+    position: fixed;
+    top:0;
+    left: 0;
+    right: 0;
+    margin-top: -300px;
+    .transition_default();
+      &:after{
+        content: '';
+        position: fixed;
+        left: 0;
+        right: 0;
+        top:0;
+        bottom: 0;
+        .transition_default();
+        background: #000;
+        visibility: hidden;
+        opacity: 0;
+        z-index: 1;
+      }
+
+    .minisearch{
+      position: relative;
+      max-width: 770px;
+      margin: 150px auto 0;
+      z-index: 2;
+      padding: 0 15px;
+      .action.search{
+        .transition_default();
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: @secondary_color;
+        color: #fff;
+        border: 0;
+        box-shadow: none;
+        border-radius: 0;
+        height: 50px;
+        line-height: 50px;
+        padding: 0 25px;
+        &:disabled{
+          opacity: 0;
+          visibility: hidden;
+        }
+        &:hover{
+          background: @primary_color;
+        }
+      }
+
+    }
+    .nested{
+      display: none;
+      .action.advanced{
+        color: @title_color;
+        text-decoration: none;
+        font-size: 13px;
+        &:hover{
+          text-decoration:underline;
+          color: @primary_color;
+        }
+      }
+    }
+  }
+  &.active{
+    z-index: 1000!important;
+    .block-content{
+      margin-top: 0;
+      &:after{
+        opacity: 0.8;
+        visibility: visible;
+      }
+    }
+  }
+  &:hover{
+
+    .block-search-top{
+      a{
+        color: @secondary_color;
+      }
+    }
+  }
+  .search-bottom{
+    text-align: center;
+    margin-top: 0;
+    z-index: 2;
+    position: absolute;
+    left: 50%;
+    .transform(translateX(-50%));
+    top: 60px;
+    .bt-close{
+      display: inline-block;
+      text-transform: uppercase;
+      font-size: 14px;
+      font-family: @font_title;
+      color: #fff;
+      font-weight: 400;
+      cursor: pointer;
+      height: 36px;
+      width: 36px;
+      border-radius: 50%;
+      line-height: 36px;
+      background: @primary_color;
+      font-size: 0;
+      .transition_default();
+      &:hover{
+        color: @primary_color;
+        background: transparent;
+      }
+      &:before{
+        content: '\eac9';
+        font-family: ionicons;
+        font-size: 20px;
+      }
+    }
+  }
+
+}

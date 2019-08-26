@@ -1,0 +1,65 @@
+<?php
+$helper = $this->helper('DrinksAndCo\Experience\Helper\Data');
+$post = $block->getCurrentPost();
+?>
+<div class="ecg-experience-post">
+
+    <div class="post-image">
+        <img src="<?php echo $post->getImageUrl(); ?>" alt="<?php echo $post->getTitle() ?>">
+    </div>        
+    <div class="title">
+        <h3><?php echo $post->getTitle() ?></h3>
+    </div>
+    <div class="post-info">
+        <div class="author">
+            <?php if ($post->getUpdatedByUser()): ?>
+                <?php echo __('Posted by %1', $post->getUpdatedByUser()); ?>
+            <?php else: ?>
+                <?php echo __('Posted by %1', $post->getUser()); ?>
+            <?php endif; ?>            
+        </div>
+        <div class="created_at">
+            <?php echo __('%1', $block->formatDate($post->getCreatedAt(), \IntlDateFormatter::MEDIUM, false)); ?>
+        </div>        
+        <?php $categories = $post->getCatetories(); ?>
+        <?php if (count($categories)): ?>
+            <p class="posted-in">
+                <?php echo __('Posted In: ') ?>
+                <?php foreach ($categories as $category): ?>
+                    <a title="<?php echo $category->getTitle(); ?>" href="<?php echo $category->getCategoryUrl(); ?>"><?php echo $category->getTitle(); ?></a>
+                <?php endforeach; ?>
+            </p>
+        <?php endif; ?>
+    </div>        
+
+    <div class="f-social">
+        <ul>
+            <li class="fb"><a href="http://www.facebook.com/sharer.php?u=<?php echo urlencode($post->getPostUrlWithNoCategory()); ?>" target="_blank"><i class="fa fa-facebook"></i></a></li>
+            <li class="tw"><a href="https://twitter.com/share?url=<?php echo urlencode($post->getPostUrlWithNoCategory()); ?>&amp;text=<?php echo urlencode($post->getTitle()); ?>" target="_blank"><i class="fa fa-twitter"></i></a></li>
+            <li class="pin">
+                <a href="https://pinterest.com/share?url=<?php echo urlencode($post->getPostUrlWithNoCategory()); ?>" target="_blank">
+                    <i class="fa fa-pinterest" aria-hidden="true"></i>
+                </a>
+            </li>
+            <li class="google-plus"><a href="https://plus.google.com/share?url=<?php echo urlencode($post->getPostUrlWithNoCategory()); ?>&amp;title=<?php echo urlencode($post->getTitle()); ?>" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+        </ul>
+    </div>
+
+    <?php if ($post->getContent()): ?>
+        <div class="post-content">
+            <?php echo $post->getContent(); ?>
+        </div>
+    <?php endif; ?>
+    <?php if ($post->getTags()): ?>
+        <?php $tags = explode(',', $post->getTags()); ?>
+        <div class="post-tags">
+            <?php echo __('Tags: '); ?>
+            <?php foreach ($tags as $tag): ?>
+                <a title="<?php echo trim($tag); ?>" href="<?php echo $helper->getTagUrl(trim($tag)); ?>"><?php echo trim($tag); ?></a>
+            <?php endforeach; ?>
+        </div>
+    <?php endif; ?>
+
+	
+    <?php echo $block->getChildHtml('post_view_comment'); ?>
+</div>

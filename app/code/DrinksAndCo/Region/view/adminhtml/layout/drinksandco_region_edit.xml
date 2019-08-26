@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="editor"/>
+    <body>
+        <referenceContainer name="content">
+            <block class="DrinksAndCo\Region\Block\Adminhtml\Region\Edit" name="drinksandco_region_edit"/>
+        </referenceContainer>
+        <referenceContainer name="legal.system">
+            <referenceBlock name="report" remove="true"/>
+            <referenceBlock name="version" remove="true"/>
+            <block class="Magento\Framework\View\Element\Template" name="faq-version" template="DrinksAndCo_Region::footer/version.phtml"/>
+            <block class="Magento\Framework\View\Element\Template" name="faq-report" template="DrinksAndCo_Region::footer/report.phtml"/>
+        </referenceContainer>
+    </body>
+</page>

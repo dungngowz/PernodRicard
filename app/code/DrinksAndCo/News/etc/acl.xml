@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+			<resource id="Magento_Backend::admin">
+                <resource id="DrinksAndCo_News::news" title="News" sortOrder="20">
+                    <resource id="DrinksAndCo_News::manage_post" title="Manage news post" sortOrder="40"/>
+                    <resource id="DrinksAndCo_News::manage_category" title="Manage news category" sortOrder="40"/>
+                    <resource id="DrinksAndCo_News::edit_post" title="edit post" sortOrder="70"/>
+                    <resource id="DrinksAndCo_News::save_post" title="save post" sortOrder="80"/>
+                    <resource id="DrinksAndCo_News::delete_post" title="delete post" sortOrder="90"/>
+                </resource>
+				 <resource id="Magento_Backend::stores">
+					<resource id="Magento_Backend::stores_settings">
+                        <resource id="Magento_Config::config">
+                            <resource id="DrinksAndCo_News::news_config" title="Manage news config" sortOrder="40"/>
+                        </resource>
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

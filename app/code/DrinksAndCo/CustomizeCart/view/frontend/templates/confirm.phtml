@@ -1,0 +1,173 @@
+<?php
+    $detailCarts = $block->getAllItems();
+    $currentCustomer = $block->getCurrentCustomer();
+
+    $address = null;
+    if($currentCustomer->getAddresses()){
+        foreach ($currentCustomer->getAddresses() as $k => $item){
+            $address = $item;
+            break;
+        }
+    }
+?>
+
+<section>
+    <form id="confirm-cart-form" data-mage-init='{"validation":{}}'>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <nav class="nav-page">
+                        <ol class="list-unstyled">
+                            <li><a href="<?=$block->getBaseUrl()?>"><?=__('Home')?></a></li>
+                            <li><a href="<?=$block->getBaseUrl() . __('url-products')?>.html"><?=__('Products')?></a></li>
+                            <li class="active"><?=__('Information Confirm')?></li>
+                        </ol>
+                    </nav>
+                </div>
+
+                <?php if($detailCarts){ $showNoData = false; ?>
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-5 col-xl-5 d-flex align-items-stretch">
+                        <section class="confirm-page wrapper-cart">
+                            <?= $this->getLayout()->createBlock('DrinksAndCo\CustomizeCart\Block\Confirm')->setTemplate('DrinksAndCo_CustomizeCart::detail-cart.phtml')->toHtml(); ?>
+                        </section>
+                    </div>
+
+                    <div class="wrap-edit-profile col-12 col-sm-12 col-md-12 col-lg-7 col-xl-7 d-flex align-items-stretch">
+                        <section class="profile-edit">
+                            <div class="tit-page">
+                                <h2><?=__('Your information')?></h2>
+                                <div class="row mt-3">
+                                    <div class="col-12 col-sm-12 col-md-7 col-lg-7 col-xl-7">
+                                        <div class="form-group">
+                                            <input type="text" name="fullname" class="form-control v-validate" placeholder="<?=__('Your name')?>"
+                                                data-validate="{required:true}"
+                                                value="<?=$currentCustomer->getName()?>"
+                                                data-msg-required="<?=__('Please enter your name')?>"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5">
+                                        <div class="form-group">
+                                            <?php $phone = $address ? $address->getTelephone() : ''; ?>
+                                            <input type="text" name="phone" class="form-control v-validate" placeholder="<?=__('Phone number')?>"
+                                                data-validate="{required:true}"
+                                                value="<?=$phone?>"
+                                                data-msg-required="<?=__('Please enter your phone')?>"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                        <div class="form-group">
+                                            <input type="text" name="address" class="form-control v-validate" placeholder="<?=__('Address')?>"
+                                                data-validate="{required:true}"
+                                                value="<?=$address ? $address->getStreet()[0] : ''?>"
+                                                data-msg-required="<?=__('Please enter your address')?>"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                        <div class="form-group form-group-region-cart">
+                                            <?php
+                                                $regionId = $address ? $address->getRegionId() : '';
+                                                echo $block->getRegions($regionId);
+                                            ?>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                        <div class="form-group">
+                                            <input type="email" name="email" class="form-control v-validate" placeholder="<?=__('Your email')?>"
+                                                data-validate="{required:true, 'validate-email': true}"
+                                                value="<?=$currentCustomer->getEmail()?>"
+                                                data-msg-required="<?=__('Please enter your email')?>"
+                                                data-msg-validate-email="<?=__('Invalid email')?>"/>
+                                        </div>
+                                    </div>
+
+                                    <?php if($currentCustomer->getGroupId() == 2){?>
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                            <div class="form-group">
+                                                <div class="ck-popup">
+                                                    <div class="checkboxFour">
+                                                        <input type="checkbox" name="export_tax_invoice" id="checkboxFourInput" value="1">
+                                                        <label for="checkboxFourInput"></label>
+                                                    </div>
+                                                    <div class="checkboxFour-label">
+                                                        <span><?=__('Export tax invoice')?></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php } ?>
+
+                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
+                                        <a class="more-masonry btn-confirm-cart" href="javascript:void(0)">
+                                            <i class="fa fa-spinner loading-save-order fa-spin hide"></i> <?=__('Apply & Submit')?>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                <?php }else{ $showNoData = true; } ?>
+
+                <div class="col-12 text-center nodata <?=($showNoData) ? '' : 'hide'?>">
+                    <h5 class="mt-5 text-center rotobo-font"><?=__("There're no products")?></h5>
+                    <a class="more-masonry mt-4" href="<?=$block->getBaseUrl() . __('url-products')?>.html">
+                        <?=__('Continue shopping')?>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </form>
+</section>
+
+
+<!-- Popup response consulted -->
+<a class="btn-popup-consultant-send" data-fancybox data-src="#popup-get-consultant-send" href="javascript:;" style="display: none;"></a>
+<section style="display: none;" id="popup-get-consultant-send">
+    <div class="wrap-popup update">
+        <div class="text-center">
+            <img class="img-fluid" src="<?php echo $this->getViewFileUrl('images/ic-logo-white.jpg'); ?>" alt="DrinksAndCo" title="DrinksAndCo"/>
+            <h2><?=__('Thank you!')?><br/><?=__('your order has been submitted')?><br/><?=__('Your order number:')?> <span class="your_order"></span></h2>
+            <a class="start-shop" href="<?=$block->getBaseUrl() . __('url-products')?>.html"><?=__('Ok')?></a>
+        </div>
+    </div>
+</section>
+
+<!-- Popup response consulted -->
+<a class="btn-popup-consultant-fail" data-fancybox data-src="#popup-get-consultant-fail" href="javascript:;" style="display: none;"></a>
+<section style="display: none;" id="popup-get-consultant-fail">
+    <div class="wrap-popup update">
+        <div class="text-center">
+            <img class="img-fluid" src="<?php echo $this->getViewFileUrl('images/ic-logo.png'); ?>" alt="DrinksAndCo" title="DrinksAndCo"/>
+            <h2><?=__('You have exceeded the amount to be purchased')?></h2>
+            <a class="start-shop btn-close-fancybox" href="javascript:void(0)"><?=__('Ok')?></a>
+        </div>
+    </div>
+</section>
+
+<!-- Popup confirm remove item cart -->
+<a class="btn-popup-confirm-update-cart" data-fancybox data-src="#popup-get-confirm-update-cart" href="javascript:;" style="display: none;"></a>
+<section style="display: none;" id="popup-get-confirm-update-cart">
+    <div class="wrap-popup update">
+        <div class="text-center">
+            <img class="img-fluid" src="<?php echo $this->getViewFileUrl('images/ic-logo.png'); ?>" alt="DrinksAndCo" title="DrinksAndCo"/>
+            <h2><?=__('Do you want to delete this item?')?></h2>
+            <a class="start-shop btn-close-fancybox" href="javascript:void(0)"><?=__('Cancel')?></a>
+            <a class="start-shop btn-delete-item-cart" href="javascript:void(0)">
+                <i class="fa fa-spinner loading-remove-item-cart fa-spin hide"></i> <?=__('Confirm')?>
+            </a>
+        </div>
+    </div>
+</section>
+
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "DrinksAndCo_CustomizeCart/js/confirm-cart": {
+                "action": "<?= $block->getAddOrderUrl()?>",
+                "actionUpdateCart": "<?= $block->getUpdateCartUrl()?>",
+                "selectorForm": "#confirm-cart-form",
+                "btnSubmit": ".btn-confirm-cart"
+            }
+        }
+    }
+</script>

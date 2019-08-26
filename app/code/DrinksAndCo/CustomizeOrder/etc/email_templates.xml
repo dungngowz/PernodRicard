@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Email:etc/email_templates.xsd">
+
+    <template id="addnew_order_template" label="Order System send push notification to Sale Manager" 
+        file="addnew_order_template.html" type="html" module="DrinksAndCo_CustomizeOrder" area="frontend"/>
+
+    <template id="customer_confirm_order_template" label="Customer Confirm Order" 
+        file="customer_confirm_order_template.html" type="html" module="DrinksAndCo_CustomizeOrder" area="frontend"/>
+    
+</config>

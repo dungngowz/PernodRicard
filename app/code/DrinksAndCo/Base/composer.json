@@ -1,0 +1,16 @@
+{
+  "name": "drinksandco/magento2-module-base",
+  "description": "DrinksAndCo Magento2 module Base",
+  "require": {
+    "php": "~7.0.0"
+  },
+  "type": "magento2-module",
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "DrinksAndCo\\Base\\": ""
+    }
+  }
+}

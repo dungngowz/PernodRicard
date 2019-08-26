@@ -1,0 +1,97 @@
+<section class="head-page">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-10 col-sm-10 col-md-11 col-lg-11 col-xl-11 text-center">
+                <!-- <h2><?=__('Login')?></h2> -->
+            </div>
+            <div class="col-2 col-sm-2 col-md-1 col-lg-1 col-xl-1 text-center">
+                <!-- switcher -->
+                <div class="switcher-language">
+                    <ul class="menu-cart list-unstyled">
+                        <!-- switcher -->
+                        <?= $this->getLayout()->createBlock('\Magento\Store\Block\Switcher')->setTemplate('DrinksAndCo_ContentBuilder::languages_switcher.phtml')->toHtml(); ?>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container ">
+        <div class="row text-center">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 login-parent">
+                <section class="login-page">
+                    <!-- Login -->
+                    <div class="wrap-popup">
+                        <div class="top text-center">
+                            <img class="img-top" src="<?= $this->getViewFileUrl('images/ic-logo-white.jpg')?>" alt="PRVN" title="PRVN"/>
+                            <h2><?=__('Welcome to Pernod Ricard Việt Nam')?></h2>
+
+                            <form class="form" id="custom-form-login" data-mage-init='{"validation":{}}'>
+                                <div>
+                                    <div class="form-group">
+                                        <input type="text" id="email-login" name="login[username]" placeholder="<?=__('Email')?>"
+                                            class="form-control v-validate"
+                                            data-mage-init='{"mage/trim-input":{}}'
+                                            data-validate="{required:true, 'validate-email': true}" />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input type="password" id="pass-login" name="login[password]" class="form-control v-validate" placeholder="<?=__('Password')?>"
+                                            data-mage-init='{"mage/trim-input":{}}'
+                                            data-validate="{required:true, 'validate-password': true}" />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input type="text" placeholder="YYYY"
+                                            class="form-control v-validate required validate-number validate-number-range number-range-1900-2010"
+                                            data-msg-validate-number-range="<?=__('You must be of age 18 or above to access the site')?>"
+                                            data-mage-init='{"mage/trim-input":{}}' />
+                                    </div>
+
+                                    <div class="note-year"><?=__('You must be of age 18 or above to access the site Please enter your date of birth')?></div>
+
+                                    <div class="ck-popup">
+                                        <div class="checkboxFour">
+                                            <input type="checkbox" name="login[rememberme]" id="checkboxFourInput" value="1">
+                                            <label for="checkboxFourInput"></label>
+                                        </div>
+                                        <div>
+                                            <span><?=__('Remember me')?></span>
+                                            <?=__('(Do not check this box if your computer is accessable to a minor person)')?>
+                                        </div>
+                                    </div>
+
+                                    <button class="more-masonry btnSubmitLogin"><i class="fa fa-spinner loading fa-spin hide"></i> <?=__('Login')?></button>
+                                </div>
+
+                                <div>
+                                    <img src="<?=$this->getViewFileUrl('images/glass.png')?>" alt="PRVN" title="PRVN"/>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+
+                </section>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "DrinksAndCo_Customer/js/login": {
+                "action": "<?= $block->getPostActionUrl()?>",
+                "selectorForm": "#custom-form-login",
+                "selectorMsg": ".msg-submit",
+                "btnSubmit": "#custom-form-login .btnSubmitLogin",
+                "actionB2B": "<?= $block->getPostActionUrl()?>",
+                "selectorFormB2B": "#b2b-first-login",
+                "btnSubmitB2B": "#b2b-first-login .btnSubmitLogin"
+            }
+        }
+    }
+</script>

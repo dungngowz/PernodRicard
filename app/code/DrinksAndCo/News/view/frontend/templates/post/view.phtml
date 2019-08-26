@@ -1,0 +1,83 @@
+<?php
+$helper = $this->helper('DrinksAndCo\News\Helper\Data');
+$post = $block->getCurrentPost();
+$relatedPost = $block->getRelatedPost();
+// foreach($relatedPost as $item)
+// {
+//     var_dump($item->getTitle());
+// }
+// var_dump($block->getBaseUrl());
+?>
+<!-- Head Title -->
+<!-- <section class="head-page">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
+                <h2><?php echo __('News') ?></h2>
+            </div>
+        </div>
+    </div>
+</section> -->
+<!--End Head Title -->
+<section>
+    <div style='background-image: url("<?php echo $post->getImageUrl(); ?>")' class="banner-detail text-center">
+        <div class="shadow"></div>
+        <div class="banner-info">
+            <h1><?php echo $post->getTitle() ?></h1>
+            <h2><?php echo $post->getShortContent(); ?></h2>
+            <div class="time"><?php echo __('%1', $block->formatDate($post->getCreatedAt(), \IntlDateFormatter::MEDIUM, false)); ?></div>
+            <div>
+                <a href="#"><img src="<?php echo $this->getViewFileUrl('images/ic-ins.png'); ?>" alt="" title=""/></a>
+                <a href="#"><img src="<?php echo $this->getViewFileUrl('images/ic-fab.png'); ?>" alt="" title=""/></a>
+                <a href="#"><img src="<?php echo $this->getViewFileUrl('images/ic-twi.png'); ?>" alt="" title=""/></a>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <section class="news-detail">
+                    <div class="wrap-detail">
+                        <?php echo $post->getContent(); ?>
+                    </div>
+                </section>
+
+                <section class="news-relate">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                            <h3><span><?php echo __('Related News');?></span></h3>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                            <div class="slider-relate">
+                                <div class="swiper-container">
+                                    <div class="swiper-wrapper">
+                                    <?php foreach($relatedPost as $related):?>
+                                        <div class="swiper-slide">
+                                            <div class="it">
+                                                <a href="<?php
+                                                if($related->getCatetories()->getFirstItem()->getUrlKey() != null )
+                                                    echo $related->getPostUrlWithCategory($related->getCatetories()->getFirstItem()->getUrlKey()); 
+                                                else    
+                                                    echo $related->getPostUrlWithNoCategory(); 
+                                                ?>">
+                                                    <img class="img-fluid" src="<?php echo $related->getRelatedImageUrl()?>" alt="<?php echo $related->getTitle() ?>" title="<?php echo $related->getTitle() ?>"/>
+                                                    <span><?php echo $related->getTitle() ?></span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    <?php endforeach ;?>
+                                        
+                                    </div>
+
+                                    <!-- Add Arrows -->
+                                        <div class="swiper-button-next"></div>
+                                        <div class="swiper-button-prev"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</section>

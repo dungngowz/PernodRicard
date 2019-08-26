@@ -1,0 +1,39 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+// @codingStandardsIgnoreFile
+/** @var \Magento\Store\Block\Switcher $block */
+
+$stores[] = $block->getStores() ;
+
+?>
+
+<li class="sub-child">
+    <a href="#" class="ic-cart">
+        <?php if($block->escapeHtml($block->getStoreName()) == 'Vietnamese'):?>
+            <span>VI</span>
+        <?php else:?>
+            <span>EN</span>
+        <?php endif;?>
+    </a>
+
+    <ul class="sub-menu-cart list-unstyled ">
+    <?php foreach ($block->getStores() as $_lang): ?>
+        <?php if($_lang->getId() != $block->getCurrentStoreId()): ?>
+            <li>
+                <?php if($block->escapeHtml($_lang->getName()) == 'English'):?>
+                <a href="#" data-post='<?= /* @noEscape */ $block->getTargetStorePostData($_lang) ?>'>
+                    <span>EN</span>
+                </a>
+                <?php else:?>
+                <a href="#" data-post='<?= /* @noEscape */ $block->getTargetStorePostData($_lang) ?>'>
+                    <span>VI</span>
+                </a>
+                <?php endif;?>
+            </li>
+        <?php endif;?>
+    <?php endforeach; ?>
+    </ul>
+</li>

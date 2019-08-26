@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Backend/etc/menu.xsd">
+    <menu>
+        <add id="DrinksAndCo_History::history" title="History" module="DrinksAndCo_History" sortOrder="90" parent="Magento_Backend::content"  resource="DrinksAndCo_History::history_section"/>
+        <add id="DrinksAndCo_History::manage_post" title="Manage Posts" module="DrinksAndCo_History" sortOrder="10" parent="DrinksAndCo_History::history" action="history/post/" resource="DrinksAndCo_History::manage_post"/>
+        <!-- <add id="DrinksAndCo_History::manage_comment" title="Manage Comments" module="DrinksAndCo_History" sortOrder="20" parent="DrinksAndCo_History::history" action="history/comment/" resource="DrinksAndCo_History::manage_comment"/> -->
+        <add id="DrinksAndCo_History::manage_category" title="Manage Categories" module="DrinksAndCo_History" sortOrder="30" parent="DrinksAndCo_History::history" action="history/category/" resource="DrinksAndCo_History::manage_category"/>
+        <!--<add id="DrinksAndCo_History::configuration" title="Configuration" module="DrinksAndCo_History" sortOrder="40" parent="DrinksAndCo_History::history" action="adminhtml/system_config/edit/section/history" resource="DrinksAndCo_History::configuration"/>-->
+    </menu>
+</config>

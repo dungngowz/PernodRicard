@@ -1,0 +1,20 @@
+{
+    "name": "drinksandco/module-customizecategory",
+    "description": "",
+    "type": "magento2-module",
+    "license": "proprietary",
+    "authors": [{
+        "name": "origin",
+        "email": "nguyenlamhuy@gmail.com"
+    }],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "DrinksAndCo\\CustomizeCategory\\": ""
+        },
+        "files": [
+            "registration.php"
+        ]
+    }
+}

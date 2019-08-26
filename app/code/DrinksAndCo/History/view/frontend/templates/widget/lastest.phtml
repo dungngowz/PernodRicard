@@ -1,0 +1,190 @@
+<?php
+$collection = $block->getPostCollection();
+$title = $this->getConfig('title');
+$description = $this->getConfig('description');
+$row = $this->getConfig('row');
+?>
+<?php if($block->getData('style_type') =='1'):?>
+<div class="ecg-history-lastest-history nav-bottom horizontal type-1">
+    <div class="ecg-owlcarousel">
+        <?php if ($title): ?>
+            <div class="ecg-title">
+                <h3><?php /* @escapeNotVerified */
+                    echo $title; ?></h3>
+                <?php if ($description != ''): ?>
+                    <p><?php /* @escapeNotVerified */
+                        echo $description; ?></p>
+                <?php endif ?>
+            </div>
+        <?php endif ?>
+        <div class="ecg-content">
+            <?php if(count($collection) >0 ):?>
+            <div class="ecg-items owl-carousel" data-slider='<?php echo $block->getDataSlider() ?>'>
+                    <?php
+                    $i = 0;
+                    $y = ($row) ? $row : 1;
+                    ?>
+                        <?php foreach ($collection as $post): ?>
+                            <?php if ($i % $y == 0): ?>
+                                <div class="ecg-item-wrap">
+                            <?php endif; ?>                            
+                                <div class="ecg-item">
+                                    <div class="post-content">
+                                        <div class="post-img">
+                                            <a href="<?php echo $post->getPostUrlWithNoCategory(); ?>" title="<?php echo $post->getTitle(); ?>"><img src="<?php echo $post->getThumbnailUrl(); ?>" alt="<?php echo $post->getTitle() ?>"></a>
+                                        </div>
+                                        <div class="post-detailt">
+                                            <div class="post-info">
+                                                <div class="created_at">
+                                                    <span><i class="fa fa-clock-o"></i></span>
+                                                    <?php if ($post->getUpdatedByUser()): ?>
+                                                        <?php echo __('%1', $block->formatDate($post->getCreatedAt(), \IntlDateFormatter::MEDIUM, false)); ?>
+                                                    <?php else: ?>
+                                                        <?php echo __('%1', $block->formatDate($post->getCreatedAt(), \IntlDateFormatter::MEDIUM, false)); ?>
+                                                    <?php endif; ?>
+
+                                                </div>
+                                                <div class="comment-link">
+                                                    <i class="fa fa-comment"></i><?php echo $post->getCommentCount(); ?><?php echo __(' Comment') ?>
+                                                </div>
+                                                <div class="author">
+                                                    <i class="fa fa-user"></i>
+                                                    <?php if ($post->getUpdatedByUser()): ?>
+                                                        <?php echo $post->getUpdatedByUser(); ?>
+                                                    <?php else: ?>
+                                                        <?php echo $post->getUser(); ?>
+                                                    <?php endif; ?>
+                                                </div> 
+                                            </div>                                       
+                                            <div class="title">
+                                                <a href="<?php echo $post->getPostUrlWithNoCategory(); ?>" title="<?php echo $post->getTitle(); ?>"><?php echo $post->getTitle() ?></a>
+                                            </div>
+                                            <div class="sort_des">
+                                                <?php echo $post->getShortContent(); ?>
+                                            </div>
+                                            <div class="post-bottom">
+                                                <a href="<?php echo $post->getPostUrlWithNoCategory(); ?>" class="readmore"
+                                                   title="<?php echo $post->getTitle(); ?>"><?php echo __('Read More'); ?><i class="fa fa-long-arrow-right"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php
+                            $i++;
+                            if ($i % $y == 0 || $i == count($collection)):
+                                ?>
+                                </div>
+                            <?php endif; ?>                                
+                        <?php endforeach; ?>
+            </div>
+            <?php else:?>
+                <p><?= __('No posts at this time.')?></p>
+            <?php endif;?>
+        </div>
+    </div>
+</div>
+<?php endif;?>
+<?php if($block->getData('style_type') =='2'):?>
+<div class="ecg-history-lastest-history nav-bottom horizontal type-2">
+    <div class="ecg-owlcarousel">
+        <?php if ($title): ?>
+            <div class="ecg-title text-center">
+                <h3><?php /* @escapeNotVerified */
+                    echo $title; ?></h3>
+                <?php if ($description != ''): ?>
+                    <p><?php /* @escapeNotVerified */
+                        echo $description; ?></p>
+                <?php endif ?>
+            </div>
+        <?php endif ?>
+        <div class="ecg-content">
+            <?php if(count($collection) >0 ):?>
+            <div class="ecg-items owl-carousel" data-slider='<?php echo $block->getDataSlider() ?>'>
+                    <?php
+                    $i = 0;
+                    $y = ($row) ? $row : 1;
+                    ?>
+                        <?php foreach ($collection as $post): ?>
+                            <?php if ($i % $y == 0): ?>
+                                <div class="ecg-item-wrap">
+                            <?php endif; ?>                            
+                                <div class="ecg-item">
+                                    <div class="post-content">
+                                        <div class="post-img">
+                                            <a href="<?php echo $post->getPostUrlWithNoCategory(); ?>" title="<?php echo $post->getTitle(); ?>"><img src="<?php echo $post->getThumbnailUrl(); ?>" alt="<?php echo $post->getTitle() ?>"></a>
+                                            <div class="post-detailt">
+                                                <div class="post-info">
+                                                    <div class="created_at">
+                                                        <span><i class="fa fa-clock-o"></i></span>
+                                                        <?php if ($post->getUpdatedByUser()): ?>
+                                                            <?php echo __('%1', $block->formatDate($post->getCreatedAt(), \IntlDateFormatter::MEDIUM, false)); ?>
+                                                        <?php else: ?>
+                                                            <?php echo __('%1', $block->formatDate($post->getCreatedAt(), \IntlDateFormatter::MEDIUM, false)); ?>
+                                                        <?php endif; ?>
+
+                                                    </div>
+                                                    <div class="comment-link">
+                                                        <i class="fa fa-comment"></i><?php echo $post->getCommentCount(); ?><?php echo __(' Comment') ?>
+                                                    </div>
+                                                    <div class="author">
+                                                        <i class="fa fa-user"></i>
+                                                        <?php if ($post->getUpdatedByUser()): ?>
+                                                            <?php echo $post->getUpdatedByUser(); ?>
+                                                        <?php else: ?>
+                                                            <?php echo $post->getUser(); ?>
+                                                        <?php endif; ?>
+                                                    </div> 
+                                                </div>                                       
+                                                <div class="title">
+                                                    <a href="<?php echo $post->getPostUrlWithNoCategory(); ?>" title="<?php echo $post->getTitle(); ?>"><?php echo $post->getTitle() ?></a>
+                                                </div>
+                                                <div class="post-bottom">
+                                                    <a href="<?php echo $post->getPostUrlWithNoCategory(); ?>" class="readmore"
+                                                       title="<?php echo $post->getTitle(); ?>"><?php echo __('Read More'); ?><i class="fa fa-long-arrow-right"></i></a>
+                                                </div>
+                                            </div>                                            
+                                        </div>
+                                        <div class="post-detailt">
+                                            <div class="post-info">
+                                                <div class="created_at">
+                                                    <span><i class="fa fa-clock-o"></i></span>
+                                                    <?php if ($post->getUpdatedByUser()): ?>
+                                                        <?php echo __('%1', $block->formatDate($post->getCreatedAt(), \IntlDateFormatter::MEDIUM, false)); ?>
+                                                    <?php else: ?>
+                                                        <?php echo __('%1', $block->formatDate($post->getCreatedAt(), \IntlDateFormatter::MEDIUM, false)); ?>
+                                                    <?php endif; ?>
+
+                                                </div>
+                                                <div class="comment-link">
+                                                    <i class="fa fa-comment"></i><?php echo $post->getCommentCount(); ?><?php echo __(' Comment') ?>
+                                                </div>
+                                                <div class="author">
+                                                    <i class="fa fa-user"></i>
+                                                    <?php if ($post->getUpdatedByUser()): ?>
+                                                        <?php echo $post->getUpdatedByUser(); ?>
+                                                    <?php else: ?>
+                                                        <?php echo $post->getUser(); ?>
+                                                    <?php endif; ?>
+                                                </div> 
+                                            </div>                                       
+                                            <div class="title">
+                                                <a href="<?php echo $post->getPostUrlWithNoCategory(); ?>" title="<?php echo $post->getTitle(); ?>"><?php echo $post->getTitle() ?></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php
+                            $i++;
+                            if ($i % $y == 0 || $i == count($collection)):
+                                ?>
+                                </div>
+                            <?php endif; ?>                                
+                        <?php endforeach; ?>
+            </div>
+            <?php else:?>
+                <p><?= __('No posts at this time.')?></p>
+            <?php endif;?>
+        </div>
+    </div>
+</div>
+<?php endif;?>

@@ -1,0 +1,80 @@
+<?php $helper = $this->helper('DrinksAndCo\Experience\Helper\Data'); ?>
+<?php if ($block->getConfig('general_settings/enabled')): ?>
+    <?php if ($block->getConfig('sidebar_settings/enabled')): ?>
+        <?php if ($block->getConfig('sidebar_settings/show_recent_posts')): ?>
+            <?php
+            $collection = $block->getCollection();
+            ?>
+            <?php if ($collection->count()): ?>
+                <div class="ecg-block ecg-experience-recent-post">
+                    <div class="ecg-title">
+                        <h3><?php echo __('Recent Posts') ?></h3>
+                    </div>
+                    <div class="ecg-content">
+                        <ul class="ecg-items">
+                            <?php foreach ($collection as $post): ?>
+                                <li class="ecg-item">
+                                    <div class="post-content">
+                                        <div class="post-image">
+                                            <img src="<?php echo $post->getThumbnailUrl(); ?>" alt="<?php echo $post->getTitle() ?>">
+                                        </div>
+                                        <div class="title">
+                                            <a href="<?php echo $post->getPostUrlWithNoCategory(); ?>" title="<?php echo $post->getTitle(); ?>"><?php echo $post->getTitle() ?></a>
+                                        </div>
+                                        <div class="created_at">
+                                            <?php if ($post->getUpdatedByUser()): ?>
+                                                <?php echo __('%1', $block->formatDate($post->getCreatedAt(), \IntlDateFormatter::MEDIUM, false)); ?>
+                                            <?php else: ?>
+                                                <?php echo __('%1', $block->formatDate($post->getCreatedAt(), \IntlDateFormatter::MEDIUM, false)); ?>
+                                            <?php endif; ?>
+                                        </div>
+                                    </div>
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
+                </div>
+            <?php endif; ?>
+        <?php endif; ?>
+        <?php if ($block->getConfig('sidebar_settings/show_categories')): ?>
+            <?php
+            $categories = $block->getCategories();
+            ?>
+            <?php if (count($categories)): ?>
+                <div class="ecg-block ecg-experience-categories">
+                    <div class="ecg-title">
+                        <h3><?php echo __('Categories') ?></h3>
+                    </div>
+                    <div class="ecg-content">
+                        <ul class="ecg-items">
+                            <?php foreach ($categories as $category): ?>
+                                <li class="ecg-item">
+									<a title="<?php echo $category->getTitle(); ?>"
+									   href="<?php echo $category->getCategoryUrl(); ?>">
+										<?php echo $category->getTitle(); ?>
+									</a>
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
+                </div>
+            <?php endif; ?>
+        <?php endif; ?>
+        <?php if ($block->getConfig('sidebar_settings/show_tags')): ?>
+            <?php $tags = $block->getTags(); ?>
+            <?php if (count($tags)): ?>
+                <div class="ecg-block ecg-experience-tags">
+                    <div class="ecg-title">
+                        <h3><?php echo __('Tags') ?></h3>
+                    </div>
+                    <div class="ecg-content">
+                        <?php
+                        foreach ($tags as $tag => $count):?>
+							<a class="tag" title="<?php echo $tag; ?>" href="<?php echo $helper->getTagUrl($tag); ?>"><?php echo $tag; ?></a>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            <?php endif; ?>
+        <?php endif; ?>
+    <?php endif; ?>
+<?php endif; ?>

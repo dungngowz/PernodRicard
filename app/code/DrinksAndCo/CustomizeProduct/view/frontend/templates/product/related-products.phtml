@@ -1,0 +1,34 @@
+<?php
+    $relatedProducts = $block->getRelatedProduct($detailProduct->getId());
+    if($relatedProducts){
+?>
+<section class="product-relate">
+    <h3><?=__('Related Products')?></h3>
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <div class="slider-relate">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+
+                <?php foreach($relatedProducts as $item){?>
+                    <div class="swiper-slide">
+                        <div class="it">
+                            <a href="<?=$item->getProductUrl()?>">
+                                <img class="img-fluid" src="<?=$block->getImage($item);?>" alt="<?=$item->getName()?>" title="<?=$item->getName()?>"/>
+                                <span><?=$item->getName()?></span>
+                            </a>
+                            <span class="price-product-rel"><?=number_format($item->getPrice())?> VNĐ</span>
+                        </div>
+                    </div>
+                <?php }?>
+                    
+                </div>
+
+                <!-- Add Arrows -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<?php } ?>

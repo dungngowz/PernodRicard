@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../Magento/Widget/etc/widget.xsd">
+    <widget id="drinksandco_blog_lastest_posts" class="DrinksAndCo\Blog\Block\Widget\Latest">
+        <label translate="true">DrinksAndCo: Blog Lastest Posts</label>
+        <description translate="true"></description>
+        <parameters>
+            <parameter name="title" xsi:type="text" visible="true" sort_order="10">
+                <label translate="true">Title</label>
+            </parameter>
+            <parameter name="description" xsi:type="text" visible="true" sort_order="15">
+                <label translate="true">Description</label>
+            </parameter>
+            <parameter name="style_type" xsi:type="select" visible="true" source_model="DrinksAndCo\Blog\Model\Config\Source\StyleType" sort_order="20">
+                <label translate="true">Style Type</label>
+            </parameter>
+            <parameter name="category" xsi:type="select" visible="true" source_model="DrinksAndCo\Blog\Model\Config\Source\Category" sort_order="20">
+                <label translate="true">Category</label>
+            </parameter>
+
+            <parameter name="slider_settings_heading" xsi:type="conditions" visible="true" sort_order="60" class="DrinksAndCo\Base\Block\Adminhtml\System\Config\Form\Field\Heading">
+                <label translate="true">Slider Settings</label>
+            </parameter>
+            <parameter name="post_count" xsi:type="text" visible="true" sort_order="70">
+                <label translate="true">Number Of Posts To Display</label>
+                <value>12</value>
+            </parameter>
+            <parameter name="max_item" xsi:type="text" visible="true" sort_order="74">
+                <label translate="true">Max Item</label>
+                <description><![CDATA[The column is showing on desstop screen.]]></description>
+                <value>1</value>
+            </parameter>
+            <parameter name="medium_item" xsi:type="text" visible="true" sort_order="78">
+                <label translate="true">Medium item</label>
+                <description><![CDATA[The column is showing on tablet.]]></description>
+                <value>1</value>
+            </parameter>
+            <parameter name="min_item" xsi:type="text" visible="true" sort_order="80">
+                <label translate="true">Min item</label>
+                <description><![CDATA[The column is showing on mobile.]]></description>
+                <value>1</value>
+            </parameter>
+            <parameter name="row" xsi:type="text" visible="true" sort_order="90">
+                <label translate="true">Row</label>
+                <description><![CDATA[The row is showing.]]></description>
+                <value>1</value>
+            </parameter>
+<!--             <parameter name="center" xsi:type="select" visible="true" source_model="Magento\Config\Model\Config\Source\Yesno" sort_order="100">
+                <label translate="true">Center</label>
+            </parameter> -->
+            <parameter name="show_dots" xsi:type="select" visible="true" source_model="Magento\Config\Model\Config\Source\Yesno" sort_order="100">
+                <label translate="true">Show Dots</label>
+            </parameter>
+            <parameter name="show_nav" xsi:type="select" visible="true" source_model="Magento\Config\Model\Config\Source\Yesno" sort_order="110">
+                <label translate="true">Show Nav</label>
+            </parameter>
+            <parameter name="loop" xsi:type="select" visible="true" source_model="Magento\Config\Model\Config\Source\Yesno" sort_order="120">
+                <label translate="true">Loop</label>
+            </parameter>
+            <parameter name="autoplay" xsi:type="select" visible="true" source_model="Magento\Config\Model\Config\Source\Yesno" sort_order="140">
+                <label translate="true">Auto Play</label>
+            </parameter>
+            <parameter name="autoplay_speed" xsi:type="text" visible="true" sort_order="150">
+                <label translate="true">Auto Play Speed</label>
+                <depends><parameter name="autoplay" value="1" /></depends>
+                <value>3000</value>
+            </parameter>
+        </parameters>
+    </widget>
+</widgets>

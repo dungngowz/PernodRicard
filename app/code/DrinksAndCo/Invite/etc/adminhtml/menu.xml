@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * menu
+ * @copyright Copyright © 1989 Staempfli. All rights reserved.
+ * @author    dung.ngowz@gmail.com
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="DrinksAndCo_Invite::friend" title="Invite Friend - Family" module="DrinksAndCo_Invite" sortOrder="70" parent="Magento_Customer::customer" action="drinksandco_invite/friend" resource="DrinksAndCo_Invite::friend"/>
+    </menu>
+</config>

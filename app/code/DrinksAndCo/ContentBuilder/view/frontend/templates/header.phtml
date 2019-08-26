@@ -1,0 +1,149 @@
+<?php
+    $againInviteFriends = $this->commonHelper->againInviteFriends();
+?>
+
+<header>
+    <div class="top-header">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                    <div class="menu-scroll">
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="<?=$block->getBaseUrl()?>">
+                                    <img class="img-fluid" src="<?php echo $this->getViewFileUrl('images/ic-logo-white-new.png'); ?>" alt="Pernod Ricard" title="Pernod Ricard"/>
+                                </a>
+                            </li>
+                            <li class="m-t-20 m-l-20">
+                                <a class="<?=$block->isActiveMenu('product')?>" href="<?=$block->getBaseUrl() . __('url-products')?>.html"><?=__('Products')?></a>
+                            </li>
+
+                            <li class="m-t-20">
+                                <a class="<?=$block->isActiveMenu('experiences')?>" href="<?=$block->getBaseUrl() . __('url-experiences')?>.html"><?=__('Experiences')?></a>
+                            </li>
+
+                            <li class="m-t-20">
+                                <a class="<?=$block->isActiveMenu('news')?>" href="<?=$block->getBaseUrl() . __('news')?>"><?=__('News')?></a>
+                            </li>
+
+                            <li class="m-t-20">
+                                <a class="<?=$block->isActiveMenu('history')?>" href="<?=$block->getBaseUrl() . __('history')?>"><?=__('History')?></a>
+                            </li>
+
+                            <li class="m-t-20">
+                                <a class="<?=$block->isActiveMenu('contact')?>"  href="<?=$block->getBaseUrl() . __('contact')?>"><?=__('Contact us')?></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 text-right">
+                    <ul class="menu-cart list-unstyled m-t-5">
+                        <li class="search">
+                            <form action="<?=$block->getUrlSearch()?>">
+                                <input class="form-control" value="<?=$block->getKeyword()?>" name="keyword" placeholder="<?=__('Search');?>" type="text"/>
+                                <button type="submit" class="btn"><i class="fa fa-search" aria-hidden="true"></i></button>
+                            </form>
+                        </li>
+
+                        <!-- switcher -->
+                        <?= $this->getLayout()->createBlock('\Magento\Store\Block\Switcher')->setTemplate('DrinksAndCo_ContentBuilder::languages_switcher.phtml')->toHtml(); ?>
+
+                        <!-- Friend Invititations -->
+                        <?php if($againInviteFriends > 0){?>
+                            <li>
+                                <input type="hidden" id="trigger-popup-invite" data-fancybox data-src="#popup-invite"/>
+                                <a class="ic-cart btn-fancybox-invite" href="javascript:void(0)" data-toggle="tooltip" data-placement="bottom" title="Invite Friend">
+                                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                        <?php } ?>
+
+                        <li>
+                            <a class="ic-cart" href="<?=$block->getBaseUrl() . __('information-confirm')?>.html" data-toggle="tooltip" data-placement="bottom" title="Shopping Cart">
+                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                            </a>
+                        </li>
+
+                        <li class="sub-child">
+                            <a class="ic-cart" href="javascript:void(0)">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                            </a>
+                            <ul class="sub-menu-cart list-unstyled">
+                                <li>
+                                    <a href="<?=$block->getBaseUrl() . __('profile')?>.html"><i class="fa fa-user-circle-o" aria-hidden="true"></i> <?=__('Profile');?></a>
+                                    <a href="<?=$block->getBaseUrl() . 'dccustomer/auth/logout'?>"><i class="fa fa-sign-out" aria-hidden="true"></i> <?=__('Logout');?></a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+        <div class="hamburger" onclick="">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <ul class="menu-head mobile-show list-unstyled">
+            <li>
+                <a  href="<?=$block->getBaseUrl() . __('url-products')?>.html"><?=__('Products')?></a>
+            </li>
+
+            <li>
+                <a href="<?=$block->getBaseUrl() . __('url-experiences')?>.html"><?=__('Experiences')?></a>
+            </li>
+
+            <li>
+                <a href="<?=$block->getBaseUrl() . __('news')?>"><?=__('News')?></a>
+            </li>
+
+            <li>
+                <a  href="<?=$block->getBaseUrl() . __('history')?>"><?=__('History')?></a>
+            </li>
+
+            <li>
+                <a   href="<?=$block->getBaseUrl() . __('contact')?>"><?=__('Contact')?></a>
+            </li>
+        </ul>
+    </div>
+    <div class="bot-header">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <a class="logo" href="<?=$block->getBaseUrl()?>">
+                        <img class="img-fluid" src="<?php echo $this->getViewFileUrl('images/ic-logo-white.jpg'); ?>" alt="Pernod Ricard" title="Pernod Ricard"/>
+                    </a>
+                </div>
+
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <ul class="menu-head list-unstyled">
+                        <li>
+                            <a class="<?=$block->isActiveMenu('product')?>" href="<?=$block->getBaseUrl() . __('url-products')?>.html"><?=__('Products')?></a>
+                        </li>
+
+                        <li>
+                            <a class="<?=$block->isActiveMenu('experiences')?>" href="<?=$block->getBaseUrl() . __('url-experiences')?>.html"><?=__('Experiences')?></a>
+                        </li>
+
+                        <li>
+                            <a class="<?=$block->isActiveMenu('news')?>" href="<?=$block->getBaseUrl() . __('news')?>"><?=__('News')?></a>
+                        </li>
+
+                        <li>
+                            <a class="<?=$block->isActiveMenu('history')?>" href="<?=$block->getBaseUrl() . __('history')?>"><?=__('History')?></a>
+                        </li>
+
+                        <li>
+                            <a class="<?=$block->isActiveMenu('contact')?>"  href="<?=$block->getBaseUrl() . __('contact')?>"><?=__('Contact us')?></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+

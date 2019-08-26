@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1columns" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="catalog.compare.sidebar" remove="true"/>
+        <referenceBlock name="wishlist_sidebar" remove="true"/>
+        <referenceBlock name="sale.reorder.sidebar" remove="true"/>
+        <referenceBlock name="page.main.title" remove="true"/>
+        
+        <referenceContainer name="sidebar.additional" remove="true">
+            <block class="DrinksAndCo\News\Block\Sidebar" name="news.sidebar" template="DrinksAndCo_News::sidebar.phtml" after="-"/>
+        </referenceContainer>
+
+        <referenceContainer name="content">
+            <block class="DrinksAndCo\News\Block\Posts" name="post_list" template="DrinksAndCo_News::posts.phtml"/>
+        </referenceContainer>
+    </body>
+</page>

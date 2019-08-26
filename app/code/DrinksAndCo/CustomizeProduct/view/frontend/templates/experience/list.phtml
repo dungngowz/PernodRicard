@@ -1,0 +1,73 @@
+<?php
+    $productCollections = $block->getProductsByCategory();
+    $productTotal = $block->getProductsByCategory(true);
+    $lastPageNumber = $productCollections->getLastPageNumber();
+    $catRootProd = $block->getCategoryRootProduct();
+
+    $currentCategory = $block->getCurrentCategory();
+?>
+
+<section>
+    <div class="container mt-3">
+        <div class="row text-center">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <div class="product-page experience">
+                    <?php if($productTotal > 0){?>
+                    <section class="wrap-product wrap-exp-load-more">
+                        <?php foreach($productCollections as $item){?>
+                            <?php $url = $item->getProductUrl(); ?>
+                            <div class="it">
+                                <div class="img">
+                                    <a href="<?=$url?>">
+                                        <img class="img-fluid" src="<?=$block->getImage($item);?>" alt="<?=$item->getName()?>" title="<?=$item->getName()?>"/>
+                                    </a>
+                                    <div>
+                                        <a href="<?=$url?>"><?=__('View detail')?></a>|
+                                        <a href="javascript:void(0)" class="add-exp-to-cart" data-product_id="<?=$item->getId()?>"><i class="fa fa-spinner loading-addtocart fa-spin hide"></i> <?=__('Add to cart')?></a>
+                                    </div>
+                                </div>
+                                <a href="<?=$url?>"><?=$item->getName()?></a>
+                                <span><?=number_format($item->getPrice())?> VNĐ</span>
+                            </div>
+                        <?php } ?>
+                    </section>
+                    <?php } ?>
+
+                    <input type="hidden" name="p" id="last-page-number" value="<?=$lastPageNumber?>"/>
+
+                    <?php if($lastPageNumber > 1){?>
+                        <div class="text-center">
+                            <a class="more-masonry btn-load-more-exp" href="javascript:void(0)"><i class="fa fa-spinner loading-loadmore fa-spin hide"></i> <?=__('View more')?></a>
+                        </div>
+                    <?php } ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Popup response consulted -->
+<a class="btn-popup-get-exp" data-fancybox data-src="#popup-get-consulted" href="javascript:;" style="display: none;"></a>
+<section style="display: none;" id="popup-get-consulted">
+    <div class="wrap-popup update">
+        <div class="text-center">
+            <img class="img-fluid" src="<?php echo $this->getViewFileUrl('images/ic-logo-white.jpg'); ?>" alt="DrinksAndCo" title="DrinksAndCo"/>
+            <h2><?=__('Your cart has been updated')?></h2>
+            <a class="start-shop" href="<?=$block->getInfomationConfirmUrl()?>"><?=__('View your cart')?></a>
+            <a class="start-shop btn-close-fancybox" href="javascript:void(0)"><?=__('Continue shopping')?></a>
+        </div>
+    </div>
+</section>
+
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "DrinksAndCo_CustomizeProduct/js/list-exp": {
+                "action": "<?= $block->getLoadMoreExpUrl()?>",
+                "btnLoadMoreExp": ".btn-load-more-exp",
+                "pageCurrent": "#last-page-number",
+                "actionAddToCart": "<?= $block->getPostActionAddToCartUrl()?>"
+            }
+        }
+    }
+</script>

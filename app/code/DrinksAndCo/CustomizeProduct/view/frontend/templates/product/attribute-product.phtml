@@ -1,0 +1,40 @@
+<?php
+    $alcoholLevels = $block->getOptionAttribute('alcohol_level');
+    $alcoholLevelsChecked = explode(',', trim($block->_request->getParam('alcohol-level'), '/'));
+    $sizesChecked = explode(',', trim($block->_request->getParam('sizes'), '/'));
+    $sizes = $block->getOptionAttribute('size_litre');
+?>
+
+<input name="alcohol-level" type="hidden" value=""/>
+<input name="sizes" type="hidden" value=""/>
+
+<?php if($alcoholLevels){?>
+    <section class="attribute-product tt-page">
+        <h4><?=__('Alcohol level')?></h4>
+        <ul class="list-unstyled">
+            <?php foreach($alcoholLevels as $item){?>
+                <?php if(!empty(trim($item['label']))){?>
+                    <li>
+                        <label><input class="alcohol-levels auto-submit-item" value="<?=$item['value']?>" type="checkbox" <?=in_array($item['value'], $alcoholLevelsChecked) ? 'checked="checked"' : ''?> /><span class="checkmark"></span> <?=$item['label']?></label>
+                    </li>
+                <?php } ?>
+            <?php } ?>
+        </ul>
+    </section>
+<?php } ?>
+
+<?php if($sizes){?>
+    <section class="attribute-product tt-page">
+        <h4><?=__('Volumes')?></h4>
+        <ul class="list-unstyled">
+            <?php foreach($sizes as $item){?>
+                <?php if(!empty(trim($item['label']))){?>
+                    <li>
+                        <label><input class="size auto-submit-item" value="<?=$item['value']?>" type="checkbox" <?=in_array($item['value'], $sizesChecked) ? 'checked="checked"' : ''?> /><span class="checkmark"></span> <?=$item['label']?> CL</label>
+                    </li>
+                <?php } ?>
+            <?php } ?>
+        </ul>
+    </section>
+<?php } ?>
+

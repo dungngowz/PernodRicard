@@ -1,0 +1,16 @@
+{
+  "name": "drinksandco/magento2-module-customizecart",
+  "description": "DrinksAndCo Magento2 module CustomizeCart",
+  "require": {
+    "php": "~7.0.0"
+  },
+  "type": "magento2-module",
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "DrinksAndCo\\CustomizeCart\\": ""
+    }
+  }
+}

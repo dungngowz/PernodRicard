@@ -1,0 +1,143 @@
+<?php
+    $detailProduct = $block->getDetailProduct();
+    $productimages = $detailProduct->getMediaGalleryImages();
+?>
+
+<section>
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <nav class="nav-page">
+                    <ol class="list-unstyled">
+                        <li><a href="<?=$block->getBaseUrl()?>"><?=__('Home')?></a></li>
+                        <li><a href="<?=$block->getBaseUrl() . __('url-products')?>.html"><?=__('Products')?></a></li>
+                        <li class="active"><?=$detailProduct->getName()?></li>
+                    </ol>
+                </nav>
+            </div>
+
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <form class="form" id="form-add-to-cart">
+                    <section class="product-detail">
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                                <?php 
+                                    if(count($productimages) > 0){
+                                        foreach($productimages as $productimage){
+                                            ?>
+                                                <div data-old="<?=$productimage['url']?>" class="img-detail">
+                                                    <img class="img-fluid" src="<?=$productimage['url']?>" 
+                                                        alt="<?=$detailProduct->getName()?>" title="<?=$detailProduct->getName()?>"/>
+                                                </div>
+                                            <?php
+                                            break;
+                                        }
+                                    }
+                                ?>
+                            </div>
+
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                                <div class="info-detail">
+                                    <h1><?=$detailProduct->getName()?></h1>
+                                    <div class="price-detail"><?=number_format($detailProduct->getPrice())?> VNĐ</div>
+
+                                    <div class="op-detail select-detail">
+                                        <input type="hidden" name="product_id" value="<?=$detailProduct->getId()?>"/>
+                                        <select class="form-control" name="qty" id="qty">
+                                            <?php for($i=1; $i< 51; $i++){?>
+                                                <option value="<?=$i?>"><?= $i<10 ? '0'.$i : $i ?></option>
+                                            <?php } ?>
+                                        </select>
+                                        <a href="javascript:void(0)" class="btn-add-to-cart"><i class="fa fa-spinner loading-addtocart fa-spin hide"></i> <?=__('Add to cart')?></a>
+                                    </div>
+
+                                    <div class="wrap-information">
+                                        <div class="op-detail">
+                                            <span><?=__('Description')?>:</span> 
+                                            <?=strip_tags($detailProduct->getDescription())?>
+                                        </div>
+
+                                        <div class="op-detail">
+                                            <span><?=__('Allow Giftwrapper')?>:</span> <?= $detailProduct->getAttributeText('allow_giftwrapper') ?>
+                                        </div>
+
+                                        <div class="op-detail">
+                                            <span><?=__('Online Exclusive')?>:</span> <?= $detailProduct->getAttributeText('online_exclusive') ?>
+                                        </div>
+
+                                        <div class="op-detail">
+                                            <span><?=__('Country')?>:</span> <?= $detailProduct->getAttributeText('country_of_manufacture') ?>
+                                        </div>
+
+                                        <div class="op-detail">
+                                            <span><?=__('Product Ingredients')?>:</span> 
+                                            <?php 
+                                                $attr = $detailProduct->getCustomAttribute('product_ingredients');
+                                                echo $attr ? $attr->getValue() : '';
+                                            ?>
+                                        </div>
+
+                                        <div class="op-detail">
+                                            <span><?=__('Product History')?>:</span>
+                                            <?php 
+                                                $attr = $detailProduct->getCustomAttribute('product_history');
+                                                echo $attr ? $attr->getValue() : '';
+                                            ?>
+                                        </div>
+
+                                        <div class="op-detail">
+                                            <?php
+                                                $alcoholLevel = $detailProduct->getAttributeText('alcohol_level');
+                                                if(!empty($alcoholLevel)){
+                                            ?>
+                                                <span><?=__('Alcohol Level')?>:</span> <?= $detailProduct->getAttributeText('alcohol_level') ?>
+                                            <?php } ?>
+                                        </div>
+                                    </div>
+                                    
+                                    <?php if(count($productimages) > 1){?>
+                                        <div class="list-img">
+                                            <?php foreach($productimages as $productimage){?>
+                                                <a href="javascript:void(0)">
+                                                    <img src="<?=$productimage['url']?>" alt="<?=$detailProduct->getName()?>" title="<?=$detailProduct->getName()?>"/>
+                                                </a>
+                                            <?php } ?>
+                                        </div>
+                                    <?php } ?>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    
+                </form>
+
+                <?php include ($block->getTemplateFile('DrinksAndCo_CustomizeProduct::product/related-products.phtml')); ?>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Popup response consulted -->
+<a class="btn-popup-get-consulted" data-fancybox data-src="#popup-get-consulted" href="javascript:;" style="display: none;"></a>
+<section style="display: none;" id="popup-get-consulted">
+    <div class="wrap-popup update">
+        <div class="text-center">
+            <img class="img-fluid" src="<?php echo $this->getViewFileUrl('images/ic-logo-white.jpg'); ?>" alt="DrinksAndCo" title="DrinksAndCo"/>
+            <h2><?=__('Your cart has been updated')?></h2>
+            <a class="start-shop" href="<?=$block->getInfomationConfirmUrl()?>"><?=__('View your cart')?></a>
+            <a class="start-shop btn-close-fancybox" href="javascript:void(0)"><?=__('Continue shopping')?></a>
+        </div>
+    </div>
+</section>
+
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "DrinksAndCo_CustomizeCart/js/customize-cart": {
+                "action": "<?= $block->getPostActionAddToCartUrl()?>",
+                "selectorForm": "#form-add-to-cart",
+                "btnSubmit": ".btn-add-to-cart"
+            }
+        }
+    }
+</script>

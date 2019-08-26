@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../Config/etc/system_file.xsd">
+    <system>
+        <tab id="customers" translate="label" sortOrder="600">
+            <label>CUSTOMERS</label>
+        </tab>
+        <section id="customer_invite" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Customer Invite</label>
+            <tab>customer</tab>
+            <resource>DrinksAndCo_Customer::config_customer</resource>
+            <group id="general_settings" translate="label" type="text" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="0">
+                <label>Customer Invite Settings</label>
+                <field id="staff" type="text" translate="label comment" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="10">
+                    <label>Staff Invite</label>
+                    <validate>validate-greater-than-zero</validate>
+                </field>
+                <field id="friend_and_family" type="text" translate="label comment" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="20">
+                    <label>Friend and Family Invite</label>
+                </field>
+                <field id="b2b" type="text" translate="label comment" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="10">
+                    <label>b2b Invite</label>
+                    <validate>validate-greater-than-zero</validate>
+                </field>
+                <field id="line_manager" type="text" translate="label comment" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="30">
+                    <label>Line Manager Invite</label>
+                    <validate>validate-greater-than-zero</validate>
+                </field>
+            </group>
+            <group id="email_settings" translate="label" type="text" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="0">
+                <label>Email Sale Manager</label>
+                <field id="email_system_1" type="text" translate="label comment" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="10">
+                    <label>Email Sale Manager Top</label>
+                </field>
+                <field id="email_system_2" type="text" translate="label comment" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="20">
+                    <label>Email Sale Manager Middle</label>
+                </field>
+                <field id="email_system_3" type="text" translate="label comment" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="30">
+                    <label>Email Sale Manager Bottom</label>
+                </field>
+                
+            </group>
+            <group id="price_settings" translate="label" type="text" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="0">
+                <label>Customer Limit Price Per Month</label>
+                <field id="staff" type="text" translate="label comment" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="10">
+                    <label>Staff Limit</label>
+                    <validate>validate-greater-than-zero</validate>
+                </field>
+                <field id="friend_and_family" type="text" translate="label comment" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="10">
+                    <label>Friend and Family Limit</label>
+                </field>
+                <field id="b2b" type="text" translate="label comment" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="10">
+                    <label>b2b Invite</label>
+                    <validate>validate-greater-than-zero</validate>
+                </field>
+                <field id="line_manager" type="text" translate="label comment" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="10">
+                    <label>Line Manager Limit</label>
+                    <validate>validate-greater-than-zero</validate>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

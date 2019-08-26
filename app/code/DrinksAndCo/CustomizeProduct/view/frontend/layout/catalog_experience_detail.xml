@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="page.main.title" remove="true"/>
+        <referenceContainer name="columns.top" remove="true"/>
+
+        <referenceContainer name="content.aside" remove="true"/>
+        <referenceContainer name="content">
+            <referenceBlock name="product.info.main" remove="true"/>
+            <referenceBlock name="product.info.media" remove="true"/>
+            <referenceBlock name="product.info.details" remove="true"/>
+            <referenceBlock name="require-cookie" remove="true"/>
+            <referenceContainer name="sidebar.additional" remove="true" />
+
+            <block class="DrinksAndCo\CustomizeProduct\Block\Experience" name="catalog_experience_detail" template="DrinksAndCo_CustomizeProduct::experience/detail.phtml" />
+        </referenceContainer>
+    </body>
+</page>

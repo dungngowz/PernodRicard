@@ -1,0 +1,72 @@
+*{
+  margin:0;
+  padding:0;
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+._keyfocus *:focus, input:not([disabled]):focus, textarea:not([disabled]):focus, select:not([disabled]):focus {
+    box-shadow: none;
+}
+.pages a.page:visited{
+  color: @title_color;
+}
+.cms-static-block.ecg-block{
+  > p{
+    margin:0;
+  }
+}
+.product.info.detailed{
+  .col{
+    width: auto;
+  }
+}
+.column:not(.sidebar-main) .form.contact, .column:not(.sidebar-additional) .form.contact{
+  width: 100%!important;
+  float: none!important;
+}
+a#back-top {
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  right: 25px;
+  bottom: 25px;
+  position: fixed;
+  .transition_default();
+  font-size: 18px;
+  background: @secondary_color;
+  border-radius: 50%;
+  &:hover{
+    background: @primary_color;
+  }
+  .fa-long-arrow-up{
+    &:before{
+      content: '\e91c';
+      font-family: ionicons;
+    }
+  }
+
+}
+body .ui-dialog .ui-dialog-buttonset button{
+  padding:0 10px;
+}
+
+.modal-content, .modal-header{
+  border: none;
+}
+
+/*
+  Ie
+ */
+html[class^='ie']{
+  height: auto;
+  body{
+    height: auto;
+  }
+}
+#authenticationPopup +p {
+  margin-top: 60px;
+}

@@ -1,0 +1,73 @@
+<?php
+
+    $collection = $block->getCollection();
+    $lastPageNumber = $collection->getLastPageNumber();
+?>
+
+<section>
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <!-- Nav -->
+                <nav class="nav-page">
+                    <ol class="list-unstyled">
+                        <li><a href="/"><?php echo __('Home'); ?></a></li>
+                        <li class='active'><?php echo __('Search'); ?></li>
+                    </ol>
+                </nav>
+                <!-- End Nav -->
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <section class="search-page">
+                    <?php if (!count($collection)): ?>
+                        <div class="message-empty">
+                            <div><?php echo __('Have no result.') ?></div>
+                        </div>
+                    <?php else: ?>
+                    <div class="search-all masonry text-left wrap-search-load-more">
+                        <?php  foreach ($collection as $post):  ?>
+                            <div class="it">
+
+                                <a href="<?php echo $post->getPostUrl(); ?>">
+
+                                    <img class="img-fluid search-item-img" src="<? if($post->getType() != 'product')  echo $post->getThumbnailUrl(); else echo $post->getThumbnailProduct();   ?>" alt="<?php echo $post->getTitle() ?>">
+                                </a>
+
+                                <div>
+                                
+                                </div>
+                                <a href="<?php echo $post->getPostUrl(); ?>">
+                                    <?php echo $post->getTitle(); ?>
+                                </a>
+                            </div>
+                        <?php endforeach;?>
+                    </div>
+
+                    <input type="hidden" name="p" id="p" value="2"/>
+                    <input type="hidden" name="p" id="last-page-number" value="<?=$lastPageNumber?>"/>
+
+                    <?php if($lastPageNumber > 1){?>
+                    <div class="text-center">
+                        <a class="more-masonry btn-load-more-search" href="javascript:void(0)"><?=__('View more')?></a>
+                        </div>
+                    <?php } ?>
+                    <?php endif; ?>
+
+                </section>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "DrinksAndCo_Search/js/list-search": {
+                "action": "<?= $block->getLoadMoreSearch()?>",
+                "btnLoadMoreProduct": ".btn-load-more-search",
+                "pageCurrent": ".search-page #p"
+            }
+        }
+    }
+</script>

@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+
+    <referenceBlock name="ecg.header" remove="true"/>
+    <referenceBlock name="ecg.footer" remove="true"/>
+
+    <referenceContainer name="content">
+        <block class="DrinksAndCo\Customer\Block\Index" name="dccustomer_login_index" template="DrinksAndCo_Customer::login.phtml" />
+    </referenceContainer>
+</page>

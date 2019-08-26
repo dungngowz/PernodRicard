@@ -1,0 +1,99 @@
+<?php 
+    $newsCollection = $block->getNewsCollection();
+    $historyCollection = $block->getHistoryCollection() ;
+    $history = $historyCollection->getFirstItem();
+    $isFirstLogin = $block->isFirstLogin();
+    $count = 2 ;
+?>
+
+<section class="banner-home">
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <a href="#">
+                    <img class="img-fluid" src="<?php echo $this->getViewFileUrl('images/img-banner.jpg'); ?>" alt="" title=""/>
+                </a>
+            </div>
+            <div class="swiper-slide">
+                <a href="#">
+                    <img class="img-fluid" src="<?php echo $this->getViewFileUrl('images/img-banner-1.jpg'); ?>" alt="" title=""/>
+                </a>
+            </div>
+            <div class="swiper-slide">
+                <a href="#">
+                    <img class="img-fluid" src="<?php echo $this->getViewFileUrl('images/img-banner-2.jpg'); ?>" alt="" title=""/>
+                </a>
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+</section>
+
+<section class="home-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <section class="news-page">
+                    <div class="news-all masonry text-left">
+                        <?php foreach($newsCollection as $news): ?>
+                            <div class="it cocktails">
+                                <a href="<?php
+                                    if($news->getCatetories()->getFirstItem()->getUrlKey() != null )
+                                        echo $news->getPostUrlWithCategory($news->getCatetories()->getFirstItem()->getUrlKey()); 
+                                    else    
+                                        echo $news->getPostUrlWithNoCategory(); 
+                                ?>">
+                                    <img class="img-fluid" src="<?php echo $news->getThumbnailUrl(); ?>" alt="" title=""/>
+                                </a>
+                                <!-- <div>Posted in Sep 5, 2019 by Rachel</div> -->
+                                <div>
+                                <?php if ($news->getUpdatedByUser()): ?>
+                                    <?php echo __('Posted by %1', $news->getUpdatedByUser()); ?>
+                                <?php else: ?>
+                                    <?php echo __('Posted by %1', $news->getUser()); ?>
+                                <?php endif; ?>  
+                                    <?php echo __('%1', $block->formatDate($news->getCreatedAt(), \IntlDateFormatter::MEDIUM, false)); ?>
+                                </div>
+                                <a href="<?php
+                                    if($news->getCatetories()->getFirstItem()->getUrlKey() != null )
+                                        echo $news->getPostUrlWithCategory($news->getCatetories()->getFirstItem()->getUrlKey()); 
+                                    else    
+                                        echo $news->getPostUrlWithNoCategory(); 
+                                ?>">
+                                    <?php echo $block->escapeHtml($news->getTitle()); ?>
+                                </a>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Block Top Brand -->
+<?= $this->getLayout()->createBlock('DrinksAndCo\CustomizeProduct\Block\Brand')->setTemplate('brand/home.phtml')->toHtml(); ?>
+
+<!-- Welcome -->
+<?php if($isFirstLogin){?>
+    <a class="btn-popup-wellcome" data-fancybox data-src="#popup-wellcome" href="javascript:;" style="display: none;"></a>
+    <section style="display: none;" id="popup-wellcome">
+        <div class="wrap-popup update">
+            <div class="text-center">
+                <img class="img-fluid" src="<?=$this->getViewFileUrl('images/ic-logo-white.jpg')?>" alt="Pernod ricard" title="Pernod ricard"/>
+                <h2><?=__('Welcome to Pernod ricard')?></h2>
+                <div class="info">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vehicula sodales neque vitae cursus. Curabitur ut libero vel nulla pharetra interdum. Proin ac libero purus. Integer vel
+                    sodales diam. Aliquam posuere porttitor libero, at fringilla velit commodo nec. Donec quis leo eu nisl malesuada tincidunt vitae at tellus. In at mi erat.
+                </div>
+                <a class="start-shop btn-close-fancybox" href="javascript:void(0)"><?=__('Start shopping')?></a>
+            </div>
+        </div>
+    </section>
+<?php } ?>
+
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "DrinksAndCo_ContentBuilder/js/home": {}
+        }
+    }
+</script>
