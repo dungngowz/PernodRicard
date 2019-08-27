@@ -306,3 +306,11 @@ footer p {
 .page-footer{
     display: none;
 }
+.sidebar-additional{
+    display: none;
+}
+.privacy-policy{
+    margin: auto;
+    width: 70%;
+    margin-top: 30px;
+}
