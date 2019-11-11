@@ -233,6 +233,7 @@ return [
         'Magently_CustomerRule' => 1,
         'Mageplaza_Core' => 1,
         'Mageplaza_DeleteOrders' => 1,
+        'Mageplaza_Smtp' => 1,
         'Shopigo_PriceFormat' => 1,
         'Temando_Shipping' => 1,
         'Umc_Base' => 1

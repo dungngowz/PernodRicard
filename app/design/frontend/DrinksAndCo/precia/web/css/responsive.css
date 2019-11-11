@@ -253,7 +253,7 @@
 @media (max-width: 480px) {
     header .bot-header img {
         max-width: 150px;
-        height:auto ;
+        height:auto;
     }
     header .search form .form-control {
         width: 110px;
