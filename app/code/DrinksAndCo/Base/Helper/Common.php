@@ -298,7 +298,7 @@ class Common extends \Magento\Framework\App\Helper\AbstractHelper
 
     public function getCustomerGroupCatalog(){
         $id = $this->session->getCustomer()->getGroupId();
-        return $id + 28;
+        return $id + 5455;
     }
 
     public function getCurrentCustomer(){

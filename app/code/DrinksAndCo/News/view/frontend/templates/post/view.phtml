@@ -2,6 +2,11 @@
 $helper = $this->helper('DrinksAndCo\News\Helper\Data');
 $post = $block->getCurrentPost();
 $relatedPost = $block->getRelatedPost();
+
+$post->iframe = strtolower(trim($post->getTags())) == 'iframe' ? true : false;
+
+//$post->iframe = true;
+
 // foreach($relatedPost as $item)
 // {
 //     var_dump($item->getTitle());
@@ -20,20 +25,22 @@ $relatedPost = $block->getRelatedPost();
 </section> -->
 <!--End Head Title -->
 <section>
-    <div style='background-image: url("<?php echo $post->getImageUrl(); ?>")' class="banner-detail text-center">
-        <div class="shadow"></div>
-        <div class="banner-info">
-            <h1><?php echo $post->getTitle() ?></h1>
-            <h2><?php echo $post->getShortContent(); ?></h2>
-            <div class="time"><?php echo __('%1', $block->formatDate($post->getCreatedAt(), \IntlDateFormatter::MEDIUM, false)); ?></div>
-            <div>
-                <a href="#"><img src="<?php echo $this->getViewFileUrl('images/ic-ins.png'); ?>" alt="" title=""/></a>
-                <a href="#"><img src="<?php echo $this->getViewFileUrl('images/ic-fab.png'); ?>" alt="" title=""/></a>
-                <a href="#"><img src="<?php echo $this->getViewFileUrl('images/ic-twi.png'); ?>" alt="" title=""/></a>
+    <?php if(!$post->iframe){?>
+        <div style='background-image: url("<?php echo $post->getImageUrl(); ?>")' class="banner-detail text-center">
+            <div class="shadow"></div>
+            <div class="banner-info">
+                <h1><?php echo $post->getTitle() ?></h1>
+                <h2><?php echo $post->getShortContent(); ?></h2>
+                <div class="time"><?php echo __('%1', $block->formatDate($post->getCreatedAt(), \IntlDateFormatter::MEDIUM, false)); ?></div>
+                <div>
+                    <a href="#"><img src="<?php echo $this->getViewFileUrl('images/ic-ins.png'); ?>" alt="" title=""/></a>
+                    <a href="#"><img src="<?php echo $this->getViewFileUrl('images/ic-fab.png'); ?>" alt="" title=""/></a>
+                    <a href="#"><img src="<?php echo $this->getViewFileUrl('images/ic-twi.png'); ?>" alt="" title=""/></a>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="container">
+    <?php } ?>
+    <div class="<?php echo ($post->iframe) ? '' : 'container'; ?>">
         <div class="row">
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                 <section class="news-detail">
@@ -42,6 +49,7 @@ $relatedPost = $block->getRelatedPost();
                     </div>
                 </section>
 
+                <?php if(!$post->iframe){?>
                 <section class="news-relate">
                     <div class="row">
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
@@ -77,6 +85,7 @@ $relatedPost = $block->getRelatedPost();
                         </div>
                     </div>
                 </section>
+                <?php } ?>
             </div>
         </div>
     </div>
